@@ -1,0 +1,13 @@
+#calculator-form {
+    border: 2px outset;
+    border-radius: 5px;
+    padding-top: 15px;
+}
+
+.justify-content-md-center {
+    margin-top: 5rem;
+}
+
+.d-grid {
+    padding: 20px;
+}
