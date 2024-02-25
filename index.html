@@ -15,26 +15,26 @@
         <label for="principal">Principal amount:</label>
         <div class="input-group">
           <span class="input-group-text" id="basic-addon1">$</span>
-          <input type="number" step="0.01" class="form-control" id="principal" name="principal" value="1000" type="number" required>
+          <input type="number" step="0.01" class="form-control" id="principal" name="principal" value="1000" required>
         </div>
         <label for="monthlyInvestment">Initial monthly investment:</label>
         <div class="input-group">
           <span class="input-group-text" id="basic-addon1">$</span>
-          <input type="number" step="0.01" class="form-control" id="monthlyInvestment" name="monthlyInvestment" value="100" type="number" required>
+          <input type="number" step="0.01" class="form-control" id="monthlyInvestment" name="monthlyInvestment" value="100"  required>
         </div>
         <label for="increaseRate">Monthly investment increase rate:</label>
         <div class="input-group">
-          <input type="number" step="0.01" class="form-control" id="increaseRate" name="increaseRate" value="0.5" type="number" required>
+          <input type="number" step="0.01" class="form-control" id="increaseRate" name="increaseRate" value="0.5" required>
           <span class="input-group-text" id="basic-addon1">%</span>
         </div>
         <label for="interest">Monthly Interest rate:</label>
         <div class="input-group">
-          <input type="number" step="0.01" class="form-control" id="interest" name="interest" value="1" type="number" required>
+          <input type="number" step="0.01" class="form-control" id="interest" name="interest" value="1" required>
           <span class="input-group-text" id="basic-addon1">%</span>
         </div>
         <label for="years">Number of years:</label>
         <div class="input-group">
-          <input type="number" class="form-control" id="years" name="years" value="5" type="number" required>
+          <input type="number" class="form-control" id="years" name="years" value="5" required>
         </div>
         <div class="d-grid gap-2">
           <button type="button" class="btn btn-primary" id="calculate">Calculate</button>
@@ -46,6 +46,6 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script> 
+  <script type="module" src="script.js"></script> 
 </body>
 </html>
