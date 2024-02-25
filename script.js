@@ -9,7 +9,7 @@ calculateButton.addEventListener('click', () => {
   // Validate input values
   const fields = ["principal", "monthlyInvestment", "increaseRate", "interest", "years"];
   let isValid = true;
-  const errorMessage = "Please enter valid numbers for: ";
+  let errorMessage = "Please enter valid numbers for: ";
   for (const field of fields) {
     if (isNaN(parseFloat(document.getElementById(field).value))) {
       isValid = false;
