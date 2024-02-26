@@ -1,13 +1,17 @@
 #calculator-form {
-    border: 2px outset;
+    border: 3px outset;
     border-radius: 5px;
-    padding-top: 15px;
+    padding-top: 20px;
 }
 
 .justify-content-md-center {
     margin-top: 5rem;
 }
 
-.d-grid {
-    padding: 20px;
+.d-grid, h3 {
+    padding: 20px 0px;
+}
+
+#logo {
+    height: 64px;
 }
