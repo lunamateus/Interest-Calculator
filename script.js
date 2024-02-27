@@ -2,6 +2,10 @@ import {Investment} from './investment.js'
 
 const calculateButton = document.getElementById('calculate');
 const resultsDiv = document.getElementById('results');
+const currentYearSpan = document.getElementById("currentYear");
+
+currentYearSpan.textContent = new Date().getFullYear();
+
 // TO DO -> Reset Button
 //const resetButton = document.getElementById('reset');
 
