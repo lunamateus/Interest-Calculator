@@ -15,3 +15,7 @@
 #logo {
     height: 64px;
 }
+
+#logo:hover {
+    height: 65px;
+}
