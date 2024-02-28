@@ -35,8 +35,10 @@ calculateButton.addEventListener('click', () => {
   const header = ["Month", "Amount"];
   const table = document.createElement("table");
   const thead = document.createElement("thead");
+  const tbody = document.createElement("tbody");
   const headerRow = document.createElement("tr");
   const resultsDiv = document.getElementById("results");
+  let months = investment.getMonths();
   
   table.classList.add("table", "table-hover");
   thead.classList.add("table-dark");
@@ -47,19 +49,16 @@ calculateButton.addEventListener('click', () => {
   `;
   thead.appendChild(headerRow);
   
-  const tbody = document.createElement("tbody");
-  
-  for (let month = 1; month <= investment.getMonths();) {
+  for (let month = 1; month <= months;) {
     investment.increase();
   
     // Create and populate row elements
     const row = document.createElement("tr");
     const monthCell = document.createElement("th");
+    const amountCell = document.createElement("td");
 
     monthCell.textContent = month++;
     monthCell.scope = "row";
-    
-    const amountCell = document.createElement("td");
     amountCell.textContent = `$${investment.getAmount().toFixed(2)}`;
   
     row.appendChild(monthCell);
@@ -73,5 +72,4 @@ calculateButton.addEventListener('click', () => {
   
   resultsDiv.innerHTML = ""; // Clear existing content
   resultsDiv.appendChild(table);
-  
 });
