@@ -1,7 +1,6 @@
 import {Investment} from './investment.js'
 
 const calculateButton = document.getElementById('calculate');
-const resultsDiv = document.getElementById('results');
 const currentYearSpan = document.getElementById("currentYear");
 
 currentYearSpan.textContent = new Date().getFullYear();
@@ -34,26 +33,45 @@ calculateButton.addEventListener('click', () => {
   );
 
   const header = ["Month", "Amount"];
-  let results = 
-  `<table class="table table-hover">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">${header[0]}</th>
-        <th scope="col">${header[1]}</th>
-      </tr>
-    </thead>
-    <tbody>`;
-
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  const resultsDiv = document.getElementById("results");
+  
+  table.classList.add("table", "table-hover");
+  thead.classList.add("table-dark");
+  
+  headerRow.innerHTML = `
+    <th scope="col">${header[0]}</th>
+    <th scope="col">${header[1]}</th>
+  `;
+  thead.appendChild(headerRow);
+  
+  const tbody = document.createElement("tbody");
+  
   for (let month = 1; month <= investment.getMonths();) {
     investment.increase();
-    results += 
-    `<tr>
-      <th scope="row">${month++}</td>
-      <td>$${investment.getAmount().toFixed(2)}</td>
-    </tr>`;
-  }
-  results += `</tbody>
-              </table>`;
+  
+    // Create and populate row elements
+    const row = document.createElement("tr");
+    const monthCell = document.createElement("th");
 
-  resultsDiv.innerHTML = results;
+    monthCell.textContent = month++;
+    monthCell.scope = "row";
+    
+    const amountCell = document.createElement("td");
+    amountCell.textContent = `$${investment.getAmount().toFixed(2)}`;
+  
+    row.appendChild(monthCell);
+    row.appendChild(amountCell);
+  
+    tbody.appendChild(row);
+  }
+  
+  table.appendChild(thead);
+  table.appendChild(tbody);
+  
+  resultsDiv.innerHTML = ""; // Clear existing content
+  resultsDiv.appendChild(table);
+  
 });
