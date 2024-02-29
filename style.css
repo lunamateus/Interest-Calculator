@@ -19,3 +19,8 @@
 #logo:hover {
     height: 66px;
 }
+
+canvas {
+    width: 100%;
+    max-width: 700px;
+}

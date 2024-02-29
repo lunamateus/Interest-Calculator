@@ -2,11 +2,39 @@ import {Investment} from './investment.js'
 
 const calculateButton = document.getElementById('calculate');
 const currentYearSpan = document.getElementById("currentYear");
+let chart = new Chart("evoChart", {});
 
 currentYearSpan.textContent = new Date().getFullYear();
 
 // TO DO -> Reset Button
 //const resetButton = document.getElementById('reset');
+
+function drawChart(x, y, head) {
+  return new Chart("evoChart", {
+    type: "line",
+    data: {
+      labels: x,
+      datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: "rgba(0,0,255,1.0)",
+        borderColor: "rgba(255,0,255,0.1)",
+        data: y
+      }]
+    },
+    options: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: head,
+        fontSize: 16
+      },
+      scales: {
+        yAxes: [{ticks: {min: y[0], max:y[y.lenght]}}],
+      }
+    }
+  });
+}
 
 calculateButton.addEventListener('click', () => {
   // Validate input values
@@ -38,7 +66,7 @@ calculateButton.addEventListener('click', () => {
   const tbody = document.createElement("tbody");
   const headerRow = document.createElement("tr");
   const resultsDiv = document.getElementById("results");
-  let months = investment.getMonths();
+  const months = Array(investment.getMonths()).fill(1).map((n, i) => n + i);
   
   table.classList.add("table", "table-hover");
   thead.classList.add("table-dark");
@@ -49,7 +77,7 @@ calculateButton.addEventListener('click', () => {
   `;
   thead.appendChild(headerRow);
   
-  for (let month = 1; month <= months;) {
+  for (let month of months) {
     investment.increase();
   
     // Create and populate row elements
@@ -59,7 +87,7 @@ calculateButton.addEventListener('click', () => {
 
     monthCell.textContent = month++;
     monthCell.scope = "row";
-    amountCell.textContent = `$${investment.getAmount().toFixed(2)}`;
+    amountCell.textContent = `$${investment.getAmount()}`;
   
     row.appendChild(monthCell);
     row.appendChild(amountCell);
@@ -72,4 +100,9 @@ calculateButton.addEventListener('click', () => {
   
   resultsDiv.innerHTML = ""; // Clear existing content
   resultsDiv.appendChild(table);
+
+  chart.destroy();
+  chart = drawChart(months, 
+    investment.getAmountSeries().slice(1), 
+    "Total Amount: $ " + investment.getAmount());
 });
