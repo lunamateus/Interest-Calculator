@@ -9,17 +9,17 @@ currentYearSpan.textContent = new Date().getFullYear();
 // TO DO -> Reset Button
 //const resetButton = document.getElementById('reset');
 
-function drawChart(x, y, head) {
+function drawChart(xData, yData, head) {
   return new Chart("evoChart", {
     type: "line",
     data: {
-      labels: x,
+      labels: xData,
       datasets: [{
         fill: false,
         lineTension: 0,
         backgroundColor: "rgba(0,0,255,1.0)",
-        borderColor: "rgba(255,0,255,0.1)",
-        data: y
+        borderColor: "rgba(0,255,255,0.1)",
+        data: yData
       }]
     },
     options: {
@@ -30,7 +30,16 @@ function drawChart(x, y, head) {
         fontSize: 16
       },
       scales: {
-        yAxes: [{ticks: {min: y[0], max:y[y.lenght]}}],
+        x: {
+          display: true,
+        },
+        y: {
+          ticks: {
+            min: yData[0], 
+            max:yData[yData.length],
+          },
+          
+        },
       }
     }
   });

@@ -4,20 +4,16 @@
     padding-top: 20px;
 }
 
-.justify-content-md-center {
-    margin-top: 5rem;
-}
-
-.d-grid, h3 {
-    padding: 20px 0px;
-}
-
 #logo {
     height: 64px;
 }
 
 #logo:hover {
     height: 66px;
+}
+
+#logoFooter {
+    height: 32px;
 }
 
 canvas {
