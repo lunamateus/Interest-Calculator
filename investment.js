@@ -6,10 +6,12 @@ export class Investment {
     this.interest = interest;
     this.years = years;
     this.currentMonth = 0;
+    this.totalMonths = years * 12;
+    this.months = Array(this.totalMonths + 1).fill(0).map((n, i) => n + i);
   }
 
-  getAmount() {
-    return this.amount[this.currentMonth];
+  getAmount(month) {
+    return this.amount[month];
   }
 
   getAmountSeries() {
@@ -17,7 +19,7 @@ export class Investment {
   }
 
   getMonths() {
-    return this.years * 12;
+    return this.months;
   }
 
   getCurrentMonth() {
@@ -28,14 +30,16 @@ export class Investment {
     return rate + 1;
   }
 
-  increase() {
-    let lastAmount = this.amount[this.currentMonth];
-    let lastMonthlyInvestment = this.monthlyInvestment[this.currentMonth];
-    let actualMonthlyInvetment = lastMonthlyInvestment * this.getRateFactor(this.increaseRate);
-    let actualAmount = lastAmount * this.getRateFactor(this.interest) + actualMonthlyInvetment;
-
-    this.monthlyInvestment.push(actualMonthlyInvetment);
-    this.amount.push(parseFloat(actualAmount.toFixed(2)));
-    this.currentMonth++;
+  generateData() {
+    for (let month = 0; month < this.totalMonths; month++) {
+      let lastAmount = this.amount[this.currentMonth];
+      let lastMonthlyInvestment = this.monthlyInvestment[this.currentMonth];
+      let actualMonthlyInvetment = lastMonthlyInvestment * this.getRateFactor(this.increaseRate);
+      let actualAmount = lastAmount * this.getRateFactor(this.interest) + actualMonthlyInvetment;
+  
+      this.monthlyInvestment.push(actualMonthlyInvetment);
+      this.amount.push(parseFloat(actualAmount.toFixed(2)));
+      this.currentMonth++;
+    }
   }
 };

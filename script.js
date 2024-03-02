@@ -1,4 +1,5 @@
 import {Investment} from './investment.js'
+import { drawChart } from './chart.js';
 
 const calculateButton = document.getElementById('calculate');
 const currentYearSpan = document.getElementById("currentYear");
@@ -8,57 +9,6 @@ currentYearSpan.textContent = new Date().getFullYear();
 
 // TO DO -> Reset Button
 //const resetButton = document.getElementById('reset');
-
-function drawChart(xData, yData, head) {
-  return new Chart("evoChart", {
-    type: "line",
-    data: {
-      labels: xData,
-      datasets: [{
-        label: `Investment`,
-        fill: false,
-        lineTension: 1,
-        backgroundColor: "rgba(0,0,255,1.0)",
-        borderColor: "rgba(0,0,255,0.2)",
-        data: yData
-      }]
-    },
-    options: {
-      responsive: true,
-      legend: {
-        display: true
-      },
-      plugins : {
-        title: {
-          display: true,
-          text: head,
-          font: {
-            size: 20
-          }
-        },
-      },
-      scales: {
-        x: {
-          display: true,
-          title: {
-            display: true,
-            text: 'Months',
-            color: '#000',
-          }
-        },
-        y: {
-          min: Math.floor(yData[0]), 
-          max: Math.ceil(yData[yData.length-1]),
-          ticks: {
-            callback: function(value, index, ticks) {
-              return '$' + value;
-            }
-          }
-        }
-      }
-    }
-  });
-}
 
 calculateButton.addEventListener('click', () => {
   // Validate input values
@@ -83,6 +33,7 @@ calculateButton.addEventListener('click', () => {
     parseFloat(document.getElementById(fields[3]).value) / 100, // interest
     parseInt(document.getElementById(fields[4]).value) // years
   );
+  investment.generateData();
 
   const header = ["Month", "Amount"];
   const table = document.createElement("table");
@@ -90,7 +41,6 @@ calculateButton.addEventListener('click', () => {
   const tbody = document.createElement("tbody");
   const headerRow = document.createElement("tr");
   const resultsDiv = document.getElementById("results");
-  const months = Array(investment.getMonths()).fill(1).map((n, i) => n + i);
   
   table.classList.add("table", "table-hover");
   thead.classList.add("table-dark");
@@ -101,21 +51,18 @@ calculateButton.addEventListener('click', () => {
   `;
   thead.appendChild(headerRow);
   
-  for (let month of months) {
-    investment.increase();
-  
+  for (let month of investment.getMonths()) {  
     // Create and populate row elements
     const row = document.createElement("tr");
     const monthCell = document.createElement("th");
     const amountCell = document.createElement("td");
 
-    monthCell.textContent = month++;
+    monthCell.textContent = month;
     monthCell.scope = "row";
-    amountCell.textContent = `$${investment.getAmount()}`;
+    amountCell.textContent = `$${investment.getAmount(month)}`;
   
     row.appendChild(monthCell);
     row.appendChild(amountCell);
-  
     tbody.appendChild(row);
   }
   
@@ -126,7 +73,8 @@ calculateButton.addEventListener('click', () => {
   resultsDiv.appendChild(table);
 
   chart.destroy();
-  chart = drawChart(months, 
-    investment.getAmountSeries().slice(1), 
-    "Total Amount: $" + investment.getAmount());
+  chart = drawChart(
+    investment.getMonths(), 
+    investment.getAmountSeries(), 
+    "Total Amount: $" + investment.getAmount(investment.getCurrentMonth()));
 });
