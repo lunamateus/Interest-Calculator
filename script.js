@@ -3,6 +3,8 @@ import { drawChart } from './chart.js';
 
 const calculateButton = document.getElementById('calculate');
 const currentYearSpan = document.getElementById("currentYear");
+const resultsDiv = document.getElementById("results");
+
 let chart = new Chart("evoChart", {});
 
 currentYearSpan.textContent = new Date().getFullYear();
@@ -10,11 +12,13 @@ currentYearSpan.textContent = new Date().getFullYear();
 // TO DO -> Reset Button
 //const resetButton = document.getElementById('reset');
 
-calculateButton.addEventListener('click', () => {
-  // Validate input values
+document.getElementById("calculator-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent default form submission
+
+  //Validate input data
   const fields = ["principal", "monthlyInvestment", "increaseRate", "interest", "years"];
   let isValid = true;
-  let errorMessage = "Please enter valid numbers for: ";
+  let errorMessage = "Please, enter valid numbers for: ";
   for (const field of fields) {
     if (isNaN(parseFloat(document.getElementById(field).value))) {
       isValid = false;
@@ -22,7 +26,11 @@ calculateButton.addEventListener('click', () => {
     }
   }
   if (!isValid) {
-    resultsDiv.innerHTML = '<p>' + errorMessage.slice(0, -2) + '</p>';
+    alert(errorMessage.slice(0, -2));
+    return;
+  }
+  if (parseFloat(document.getElementById("years").value) > 100) {
+    alert(errorMessage.slice(0, -2) + ' years between 1 and 100');
     return;
   }
 
@@ -40,7 +48,6 @@ calculateButton.addEventListener('click', () => {
   const thead = document.createElement("thead");
   const tbody = document.createElement("tbody");
   const headerRow = document.createElement("tr");
-  const resultsDiv = document.getElementById("results");
   
   table.classList.add("table", "table-hover");
   thead.classList.add("table-dark");
