@@ -15,31 +15,46 @@ function drawChart(xData, yData, head) {
     data: {
       labels: xData,
       datasets: [{
+        label: `Investment`,
         fill: false,
-        lineTension: 0,
+        lineTension: 1,
         backgroundColor: "rgba(0,0,255,1.0)",
-        borderColor: "rgba(0,255,255,0.1)",
+        borderColor: "rgba(0,0,255,0.2)",
         data: yData
       }]
     },
     options: {
-      legend: {display: false},
-      title: {
-        display: true,
-        text: head,
-        fontSize: 16
+      responsive: true,
+      legend: {
+        display: true
+      },
+      plugins : {
+        title: {
+          display: true,
+          text: head,
+          font: {
+            size: 20
+          }
+        },
       },
       scales: {
         x: {
           display: true,
+          title: {
+            display: true,
+            text: 'Months',
+            color: '#000',
+          }
         },
         y: {
+          min: Math.floor(yData[0]), 
+          max: Math.ceil(yData[yData.length-1]),
           ticks: {
-            min: yData[0], 
-            max:yData[yData.length],
-          },
-          
-        },
+            callback: function(value, index, ticks) {
+              return '$' + value;
+            }
+          }
+        }
       }
     }
   });
@@ -113,5 +128,5 @@ calculateButton.addEventListener('click', () => {
   chart.destroy();
   chart = drawChart(months, 
     investment.getAmountSeries().slice(1), 
-    "Total Amount: $ " + investment.getAmount());
+    "Total Amount: $" + investment.getAmount());
 });
