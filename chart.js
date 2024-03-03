@@ -1,15 +1,24 @@
-export function drawChart(xData, yData, head) {
+export function drawChart(time, total, increments, head) {
     return new Chart("evoChart", {
       type: "line",
       data: {
-        labels: xData,
+        labels: time,
         datasets: [{
-          label: `Investment`,
+          label: `Total`,
           fill: false,
-          lineTension: 1,
-          backgroundColor: "rgba(0,0,255,1.0)",
-          borderColor: "rgba(0,0,255,0.2)",
-          data: yData
+          lineTension: 0.1,
+          backgroundColor: "rgba(34,57,89,1.0)", //Berkeley Blue
+          borderColor: "rgba(34,57,89,0.2)",
+          data: total
+        },
+        {
+          label: `Invested`,
+          fill: true,
+          lineTension: 0.1,
+          backgroundColor: "rgba(239,91,91,0.2)", //Bittersweet
+          borderColor: "rgba(239,91,91,1)",
+          pointRadius: 0,
+          data: increments
         }]
       },
       options: {
@@ -36,10 +45,10 @@ export function drawChart(xData, yData, head) {
             }
           },
           y: {
-            min: Math.floor(yData[0]), 
-            max: Math.ceil(yData[yData.length-1]),
+            min: Math.floor(total[0]), 
+            max: Math.ceil(total[total.length-1]),
             ticks: {
-              callback: function(value, index, ticks) {
+              callback: function(value) {
                 return '$' + value;
               }
             }

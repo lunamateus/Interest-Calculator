@@ -82,6 +82,7 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
   chart.destroy();
   chart = drawChart(
     investment.getMonths(), 
-    investment.getAmountSeries(), 
-    "Total Amount: $" + investment.getAmount(investment.getCurrentMonth()));
+    investment.getAmountSeries(),
+    investment.getInvestedAmounts(),
+    "Total Amount: $" + investment.getAmount(investment.getTotalMonths()));
 });
