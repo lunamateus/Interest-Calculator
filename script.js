@@ -43,7 +43,7 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
   );
   investment.generateData();
 
-  const header = ["Month", "Amount"];
+  const header = ["Month", "Invested", "Total Amount"];
   const table = document.createElement("table");
   const thead = document.createElement("thead");
   const tbody = document.createElement("tbody");
@@ -55,20 +55,23 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
   headerRow.innerHTML = `
     <th scope="col">${header[0]}</th>
     <th scope="col">${header[1]}</th>
-  `;
+    <th scope="col">${header[2]}</th>`;
   thead.appendChild(headerRow);
   
   for (let month of investment.getMonths()) {  
     // Create and populate row elements
     const row = document.createElement("tr");
     const monthCell = document.createElement("th");
+    const investedCell = document.createElement("td");
     const amountCell = document.createElement("td");
 
     monthCell.textContent = month;
     monthCell.scope = "row";
+    investedCell.textContent = `$${investment.getInvestedAmount(month)}`;
     amountCell.textContent = `$${investment.getAmount(month)}`;
   
     row.appendChild(monthCell);
+    row.appendChild(investedCell);
     row.appendChild(amountCell);
     tbody.appendChild(row);
   }
@@ -82,7 +85,7 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
   chart.destroy();
   chart = drawChart(
     investment.getMonths(), 
-    investment.getAmountSeries(),
+    investment.getTotalAmounts(),
     investment.getInvestedAmounts(),
     "Total Amount: $" + investment.getAmount(investment.getTotalMonths()));
 });
