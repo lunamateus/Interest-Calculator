@@ -67,8 +67,8 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
 
     monthCell.textContent = month;
     monthCell.scope = "row";
-    investedCell.textContent = `$${investment.getInvestedAmount(month)}`;
-    amountCell.textContent = `$${investment.getAmount(month)}`;
+    investedCell.textContent = `$${investment.getInvestedAmount(month).toLocaleString()}`;
+    amountCell.textContent = `$${investment.getAmount(month).toLocaleString()}`;
   
     row.appendChild(monthCell);
     row.appendChild(investedCell);
@@ -87,5 +87,5 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
     investment.getMonths(), 
     investment.getTotalAmounts(),
     investment.getInvestedAmounts(),
-    "Total Amount: $" + investment.getAmount(investment.getTotalMonths()));
+    "Total Amount: $" + investment.getAmount(investment.getTotalMonths()).toLocaleString());
 });

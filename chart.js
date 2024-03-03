@@ -49,7 +49,7 @@ export function drawChart(time, total, increments, head) {
             max: Math.ceil(total[total.length-1]),
             ticks: {
               callback: function(value) {
-                return '$' + value;
+                return '$' + value.toLocaleString();
               }
             }
           }
