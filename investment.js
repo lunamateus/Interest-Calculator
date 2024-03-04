@@ -55,6 +55,5 @@ export class Investment {
       this.invested.push(parseFloat(totalInvested.toFixed(2)));
       this.amount.push(parseFloat(actualAmount.toFixed(2)));
     }
-    console.log(this.invested);
   }
 };
