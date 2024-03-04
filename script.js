@@ -4,10 +4,10 @@ import {getMonthYears} from './date.js';
 
 const currentYearSpan = document.getElementById("currentYear");
 const resultsDiv = document.getElementById("results");
-
 let chart = new Chart("evoChart", {});
-
 currentYearSpan.textContent = new Date().getFullYear();
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
 // TO DO -> Reset Button
 //const resetButton = document.getElementById('reset');
@@ -15,7 +15,7 @@ currentYearSpan.textContent = new Date().getFullYear();
 document.getElementById("calculator-form").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent default form submission
   //Validate input data
-  const fields = ["principal", "monthlyInvestment", "increaseRate", "interest", "years"];
+  const fields = ["principal", "monthlyContribution", "increaseRate", "interest", "years"];
   let isValid = true;
   let errorMessage = "Please, enter valid numbers for: ";
   for (const field of fields) {
@@ -35,14 +35,14 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
 
   const investment = new Investment(
     parseFloat(document.getElementById(fields[0]).value), // principal
-    parseFloat(document.getElementById(fields[1]).value), // monthlyInvestment
+    parseFloat(document.getElementById(fields[1]).value), // monthlyContribution
     parseFloat(document.getElementById(fields[2]).value) / 100, // increaseRate
     parseFloat(document.getElementById(fields[3]).value) / 100, // interest
     parseInt(document.getElementById(fields[4]).value) // years
   );
   investment.generateData();
 
-  const columns = ["Month", "Date", "Invested", "Total Amount"];
+  const columns = ["Month", "Date", "Deposited", "Total Amount"];
   const table = document.createElement("table");
   const thead = document.createElement("thead");
   const tbody = document.createElement("tbody");
