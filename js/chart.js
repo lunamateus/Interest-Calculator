@@ -1,4 +1,4 @@
-import {formatToCurrency} from './table.js'
+import {formatToCurrency} from './table.js';
 
 export function drawChart(time, total, increments, head) {
     return new Chart("evoChart", {

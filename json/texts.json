@@ -1,0 +1,54 @@
+{
+  "tooltips": [
+    {
+      "tag": "span",
+      "class": "material-symbols-outlined",
+      "attributes": {
+        "data_bs_toggle": "tooltip",
+        "data_bs_placement": "right",
+        "data_bs_title": "The amount of money you will start depositing."
+      },
+      "labelId": "principal"
+    },
+    {
+      "tag": "span",
+      "class": "material-symbols-outlined",
+      "attributes": {
+        "data_bs_toggle": "tooltip",
+        "data_bs_placement": "right",
+        "data_bs_title": "The amount of money you can monthly invest after your initial deposit."
+      },
+      "labelId": "monthlyContribution"
+    },
+    {
+      "tag": "span",
+      "class": "material-symbols-outlined",
+      "attributes": {
+        "data_bs_toggle": "tooltip",
+        "data_bs_placement": "right",
+        "data_bs_title": "The percentage you can add to your monthly contributions."
+      },
+      "labelId": "increaseRate"
+    },
+    {
+      "tag": "span",
+      "class": "material-symbols-outlined",
+      "attributes": {
+        "data_bs_toggle": "tooltip",
+        "data_bs_placement": "right",
+        "data_bs_title": "The average growth you expect to earn on your investment."
+      },
+      "labelId": "interest"
+    },
+    {
+      "tag": "span",
+      "class": "material-symbols-outlined",
+      "attributes": {
+        "data_bs_toggle": "tooltip",
+        "data_bs_placement": "right",
+        "data_bs_title": "The number of years depositing monthly contributions."
+      },
+      "labelId": "years"
+    }
+  ]
+}
