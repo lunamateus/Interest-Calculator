@@ -4,6 +4,17 @@ import {drawChart} from './chart.js';
 
 let chart = new Chart("evoChart", {});
 
+function appendToParent(element, parent, content = '', scope = '') {
+  const child = document.createElement(element);
+  child.scope = scope;
+  child.textContent = content;
+  parent.appendChild(child);
+}
+
+function formatToCurrency(content) {
+  return `$${content.toLocaleString()}`;
+}
+
 export function generateData(fields) {
   const columns = ["Month", "Date", "Deposited", "Total Amount"];
   const table = document.createElement("table");
@@ -19,7 +30,7 @@ export function generateData(fields) {
   );
   const dates = getMonthYears(investment.getTotalMonths() + 1);
   
-  investment.generateData();
+  investment.grow();
   
   table.classList.add("table", "table-hover");
   thead.classList.add("table-dark");
@@ -35,21 +46,12 @@ export function generateData(fields) {
   for (let month of investment.getMonths()) {  
     // Create and populate row elements
     const row = document.createElement("tr");
-    const monthCell = document.createElement("th");
-    const dateCell = document.createElement("td");
-    const investedCell = document.createElement("td");
-    const amountCell = document.createElement("td");
-  
-    monthCell.scope = "row";
-    monthCell.textContent = month;
-    dateCell.textContent = dates[month];
-    investedCell.textContent = `$${investment.getInvestedAmount(month).toLocaleString()}`;
-    amountCell.textContent = `$${investment.getAmount(month).toLocaleString()}`;
-  
-    row.appendChild(monthCell);
-    row.appendChild(dateCell);
-    row.appendChild(investedCell);
-    row.appendChild(amountCell);
+
+    appendToParent("th", row, month, "row");
+    appendToParent("td", row, dates[month]);
+    appendToParent("td", row, formatToCurrency(investment.getInvestedAmount(month)));
+    appendToParent("td", row, formatToCurrency(investment.getAmount(month)));
+
     tbody.appendChild(row);
   }
   
@@ -61,7 +63,7 @@ export function generateData(fields) {
     investment.getMonths(), 
     investment.getTotalAmounts(),
     investment.getInvestedAmounts(),
-    "Total Amount: $" + investment.getAmount(investment.getTotalMonths()).toLocaleString());
+    `Total Amount: ${formatToCurrency(investment.getAmount(investment.getTotalMonths()))}`);
 
   return table;
 }

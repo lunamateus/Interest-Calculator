@@ -43,7 +43,7 @@ export class Investment {
     return rate + 1;
   }
 
-  generateData() {
+  grow() {
     for (let month = 0; month < this.totalMonths; month++) {
       let lastAmount = this.amount[month];
       let lastMonthlyInvestment = this.monthlyInvestment[month];
