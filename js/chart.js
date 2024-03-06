@@ -1,3 +1,5 @@
+import {formatToCurrency} from './table.js'
+
 export function drawChart(time, total, increments, head) {
     return new Chart("evoChart", {
       type: "line",
@@ -49,7 +51,7 @@ export function drawChart(time, total, increments, head) {
             max: Math.ceil(total[total.length-1]),
             ticks: {
               callback: function(value) {
-                return '$' + value.toLocaleString();
+                return formatToCurrency(value);
               }
             }
           }

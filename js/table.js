@@ -11,7 +11,7 @@ function appendToParent(element, parent, content = '', scope = '') {
   parent.appendChild(child);
 }
 
-function formatToCurrency(content) {
+export function formatToCurrency(content) {
   return `$${content.toLocaleString()}`;
 }
 
