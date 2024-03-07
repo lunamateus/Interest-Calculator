@@ -1,4 +1,4 @@
-import data from "../json/texts.json" assert { type: "json" };
+import data from "../json/tooltips.json" assert { type: "json" };
 
 function insertTooltips(tooltipData) {
   const labels = document.querySelectorAll('label');

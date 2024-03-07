@@ -1,0 +1,24 @@
+{
+  "labels": [
+    {
+      "for": "principal",
+      "text": "Initial deposit:"
+    },
+    {
+      "for": "monthlyContribution",
+      "text": "Initial monthly contribution:"
+    },
+    {
+      "for": "increaseRate",
+      "text": "Monthly contribution increase rate:"
+    },
+    {
+      "for": "interest",
+      "text": "Estimated Interest rate:"
+    },
+    {
+      "for": "years",
+      "text": "Number of years:"
+    }
+  ]
+}
