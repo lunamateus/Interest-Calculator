@@ -73,5 +73,6 @@
       "text": "Number of years:"
     }
   ],
-  "title": "Compound Interest Calculator"    
+  "title": "Compound Interest Calculator",
+  "totalAmount": "Total Amount:"
 }

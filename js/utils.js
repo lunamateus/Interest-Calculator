@@ -45,6 +45,25 @@ function insertTooltips(tooltipData) {
   }
 }
 
+export function getJsonValue(key) {
+  if (typeof data === 'object' && data !== null) {
+    // Check if the key exists in the object
+    if (key in data) {
+      return data[key];
+    } else {
+      // Recursively search nested dictionaries (if applicable)
+      for (const value of Object.values(data)) {
+        const result = getJsonValue(value, key);
+        if (result !== undefined) {
+          return result;
+        }
+      }
+    }
+  }
+
+  return undefined; // Key not found or invalid data structure
+}
+
 insertTitle(data.title);
 insertLabels(data.labels);
 insertTooltips(data.tooltips);
