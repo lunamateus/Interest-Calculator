@@ -26,24 +26,23 @@ function insertTooltips(tooltipData) {
 
   for (const label of labels) {
     const labelId = label.getAttribute('for');
+    const tooltipTitle = tooltipData[labelId];
 
-    // Find matching tooltip data based on labelId
-    const matchingTooltip = tooltipData.find(tooltip => tooltip.labelId === labelId);
-    if (matchingTooltip) {
-      const span = document.createElement(matchingTooltip.tag); // Use tag from JSON
-      span.classList.add(matchingTooltip.class); // Add class from JSON
+    if (tooltipTitle) {
+      const span = document.createElement('span');
+      span.classList.add("material-symbols-outlined");
 
-      // Set tooltip attributes based on JSON data
+      // Set attributes using default and specific data
       span.setAttribute('data-bs-toggle', 'tooltip');
-      span.setAttribute('data-bs-placement', matchingTooltip.attributes.data_bs_placement);
-      span.setAttribute('data-bs-title', matchingTooltip.attributes.data_bs_title);
+      span.setAttribute('data-bs-placement', 'right');
+      span.setAttribute('data-bs-title', tooltipTitle);
       span.textContent = 'info';
 
-      // Insert the span element after the label
       label.parentNode.insertBefore(span, label.nextSibling);
     }
   }
 }
+
 
 export function getJsonValue(key) {
   if (typeof data === 'object' && data !== null) {
