@@ -19,23 +19,23 @@
 <body>
   <div class="container text-center">
     <div class="row py-3 justify-content-md-center">
-      <form id="contactForm" class="col col-md-4 py-3">  
+      <form id="contactForm" class="col col-md-4 py-3" action="https://formspree.io/f/mvoeqrev" method="POST">  
         <image id="logo" src="assets/images/logo-512px.png" alt="Logo">
-          <h3 class="text-center py-3">Contact</h3>  
+          <h3 class="text-center py-3">Contact me</h3>  
         <div class="mb-3">
           <label class="form-label" for="name">Name</label>
-          <input class="form-control" id="name" type="text" placeholder="Name" data-sb-validations="required" />
+          <input class="form-control" id="name" name="name" type="text" placeholder="Name" data-sb-validations="required" />
           <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
         </div>
         <div class="mb-3">
           <label class="form-label" for="emailAddress">Email Address</label>
-          <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required, email" />
+          <input class="form-control" id="emailAddress" name="email" type="email" placeholder="Email Address" data-sb-validations="required, email" />
           <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email address is required.</div>
           <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email address Email is not valid.</div>
         </div>
         <div class="mb-3">
           <label class="form-label" for="message">Message</label>
-          <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
+          <textarea class="form-control" id="message" name="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
           <div class="invalid-feedback" data-sb-feedback="message:required">The message is required.</div>
         </div>
         <div class="d-none" id="submitSuccessMessage">
@@ -45,7 +45,7 @@
           <div class="text-center text-danger mb-3">Error sending email!</div>
         </div>
         <div class="d-grid">
-          <button class="btn btn-primary btn" type="submit" disabled>Soon!</button>
+          <button class="btn btn-primary btn" type="submit">Send Email</button>
         </div>
       </form>
     </div>
@@ -57,7 +57,7 @@
         <img id="logoFooter" src="assets/images/logo-512px.png" alt="Logo">
       </a>
       <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="/index.html" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="./index.html" class="nav-link px-2 text-muted">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
       </ul>
