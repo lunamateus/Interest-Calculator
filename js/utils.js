@@ -43,7 +43,6 @@ function insertTooltips(tooltipData) {
   }
 }
 
-
 export function getJsonValue(key) {
   if (typeof data === 'object' && data !== null) {
     // Check if the key exists in the object
@@ -59,7 +58,6 @@ export function getJsonValue(key) {
       }
     }
   }
-
   return undefined; // Key not found or invalid data structure
 }
 
