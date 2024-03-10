@@ -28,6 +28,10 @@
       "text": "Number of years:"
     }
   ],
+  "buttons": {
+    "calculate": "Calculate",
+    "clear": "Clear"
+  },
   "title": "Compound Interest Calculator",
   "totalAmount": "Total Amount:"
 }

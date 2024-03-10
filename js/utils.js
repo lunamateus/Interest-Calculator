@@ -1,13 +1,13 @@
 import data from "../json/texts.json" assert { type: "json" };
 
-function insertTitle(titleData) {
+function setTitle(titleData) {
   const titles = document.getElementsByClassName("title");
   for (const title of titles) {
     title.textContent = titleData;
   }
 }
 
-function insertLabels(labelsData) {
+function setLabels(labelsData) {
   const labels = document.querySelectorAll('label');
 
   for (const label of labels) {
@@ -21,7 +21,7 @@ function insertLabels(labelsData) {
   }
 }
 
-function insertTooltips(tooltipData) {
+function setTooltips(tooltipData) {
   const labels = document.querySelectorAll('label');
 
   for (const label of labels) {
@@ -46,13 +46,24 @@ function insertTooltips(tooltipData) {
   [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 }
 
+function setButtons(buttonData) {
+  const buttons = document.querySelectorAll('button');
+
+  for (const button of buttons) {
+    const buttonId = button.getAttribute('id');
+    const btnText = buttonData[buttonId];
+
+    if (btnText) {
+      button.textContent = btnText;
+    }
+  }
+}
+
 export function getJsonValue(key) {
   if (typeof data === 'object' && data !== null) {
-    // Check if the key exists in the object
     if (key in data) {
       return data[key];
     } else {
-      // Recursively search nested dictionaries (if applicable)
       for (const value of Object.values(data)) {
         const result = getJsonValue(value, key);
         if (result !== undefined) {
@@ -61,9 +72,10 @@ export function getJsonValue(key) {
       }
     }
   }
-  return undefined; // Key not found or invalid data structure
+  return undefined;
 }
 
-insertTitle(data.title);
-insertLabels(data.labels);
-insertTooltips(data.tooltips);
+setTitle(data.title);
+setLabels(data.labels);
+setButtons(data.buttons);
+setTooltips(data.tooltips);
