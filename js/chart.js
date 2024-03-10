@@ -25,6 +25,7 @@ export function drawChart(time, total, increments, head) {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         legend: {
           display: true
         },
