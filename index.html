@@ -21,28 +21,33 @@
     <div class="row py-3 justify-content-md-center">
       <form id="calculator-form" class="col col-md-4">
         <image id="logo" src="assets/images/logo-512px.png" alt="Logo">
-        <h3 class="text-center py-3 title"></h3>
+        <h3 class="text-center py-3" id="headerCalculator"></h3>
         <label for="principal"></label>
+        <span class="material-symbols-outlined" id="principalTooltip">info</span>
         <div class="input-group">
           <span class="input-group-text">$</span>
           <input type="number" step="0.01" class="form-control" id="principal" autocomplete="on" name="principal" value="1000" min="0" max="1e12" required>
         </div>
         <label for="monthlyContribution"></label>
+        <span class="material-symbols-outlined" id="monthlyContributionTooltip">info</span>
         <div class="input-group">
           <span class="input-group-text">$</span>
           <input type="number" step="0.01" class="form-control" id="monthlyContribution" autocomplete="on" value="100" min="0" max="1e9" required>
         </div>
         <label for="increaseRate"></label>
+        <span class="material-symbols-outlined" id="increaseRateTooltip">info</span>
         <div class="input-group">
           <input type="number" step="0.01" class="form-control" id="increaseRate" autocomplete="on" value="0.5" min="0" max="1000" required>
           <span class="input-group-text">%</span>
         </div>
         <label for="interest"></label>
+        <span class="material-symbols-outlined" id="interestTooltip">info</span>
         <div class="input-group">
           <input type="number" step="0.01" class="form-control" id="interest" autocomplete="on" value="1" min="0" max="1000"required>
           <span class="input-group-text">%</span>
         </div>
         <label for="years"></label>
+        <span class="material-symbols-outlined" id="yearsTooltip">info</span>
         <div class="input-group">
           <input type="number" step="1" class="form-control" id="years" autocomplete="on" value="5" min="1" max="100" required>
         </div>
@@ -66,9 +71,9 @@
         <img id="logoFooter" src="assets/images/logo-512px.png" alt="Logo">
       </a>
       <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-        <li class="nav-item"><a href="./about.html" class="nav-link px-2 text-muted">About</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted" id="home"></a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted" id="faq"></a></li>
+        <li class="nav-item"><a href="./about.html" class="nav-link px-2 text-muted" id="about"></a></li>
       </ul>
     </footer>
   </div>

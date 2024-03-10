@@ -20,18 +20,21 @@
     <div class="row py-3 justify-content-md-center">
       <form id="contactForm" class="col col-md-4 py-3" target="_blank" action="https://formspree.io/f/mvoeqrev" method="POST">  
         <image id="logo" src="assets/images/logo-512px.png" alt="Logo">
-          <h3 class="text-center py-3">Contact me</h3>  
+          <h3 class="text-center py-3" id="headerContact"></h3>  
         <div class="mb-3">
-          <input class="form-control" id="name" name="name" type="text" placeholder="Name" autocomplete="on" required/>
+          <label for="name"></label>
+          <input class="form-control" id="name" name="name" type="text" autocomplete="on" required/>
           <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
         </div>
         <div class="mb-3">
-          <input class="form-control" id="emailAddress" name="email" type="email" placeholder="Email Address" autocomplete="on" required/>
+          <label for="email"></label>
+          <input class="form-control" id="emailAddress" name="email" type="email" autocomplete="on" required/>
           <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email address is required.</div>
           <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email address Email is not valid.</div>
         </div>
         <div class="mb-3">
-          <textarea class="form-control" id="message" name="message" type="text" placeholder="Message" required></textarea>
+          <label for="message"></label>
+          <textarea class="form-control" id="message" name="message" type="text" required></textarea>
           <div class="invalid-feedback" data-sb-feedback="message:required">The message is required.</div>
         </div>
         <div class="d-none" id="submitSuccessMessage">
@@ -41,7 +44,7 @@
           <div class="text-center text-danger mb-3">Error sending email!</div>
         </div>
         <div class="d-grid">
-          <button class="btn btn-primary btn" form="contactForm" type="submit">Send Email</button>
+          <button class="btn btn-primary btn" form="contactForm" type="submit" id="sendEmail"></button>
         </div>
       </form>
     </div>
@@ -53,9 +56,9 @@
         <img id="logoFooter" src="assets/images/logo-512px.png" alt="Logo">
       </a>
       <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="./index.html" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+        <li class="nav-item"><a href="./index.html" class="nav-link px-2 text-muted" id="home"></a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted" id="faq"></a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted" id="about"></a></li>
       </ul>
     </footer>
   </div>

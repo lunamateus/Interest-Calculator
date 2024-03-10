@@ -1,60 +1,25 @@
 import data from "../json/texts.json" assert { type: "json" };
 
 function setTitle(titleData) {
-  const titles = document.getElementsByClassName("title");
+  const titles = document.querySelectorAll('title');
   for (const title of titles) {
     title.textContent = titleData;
   }
 }
 
-function setLabels(labelsData) {
-  const labels = document.querySelectorAll('label');
+function setTextContent(elementType, attribute, data, tooltip = false) {
+  const elements = document.querySelectorAll(elementType);
 
-  for (const label of labels) {
-    const labelId = label.getAttribute('for');
+  for (const element of elements) {
+    const id = element.getAttribute(attribute);
+    const text = data[id];
 
-    // Find matching tooltip data based on labelId
-    const matchingLabel = labelsData.find(label => label.for === labelId);
-    if (matchingLabel) {
-      label.textContent = matchingLabel.text;
-    }
-  }
-}
-
-function setTooltips(tooltipData) {
-  const labels = document.querySelectorAll('label');
-
-  for (const label of labels) {
-    const labelId = label.getAttribute('for');
-    const tooltipTitle = tooltipData[labelId];
-
-    if (tooltipTitle) {
-      const span = document.createElement('span');
-      span.classList.add("material-symbols-outlined");
-
-      // Set attributes using default and specific data
-      span.setAttribute('data-bs-toggle', 'tooltip');
-      span.setAttribute('data-bs-placement', 'right');
-      span.setAttribute('data-bs-title', tooltipTitle);
-      span.textContent = 'info';
-
-      label.parentNode.insertBefore(span, label.nextSibling);
-    }
-  }
-
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-  [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-}
-
-function setButtons(buttonData) {
-  const buttons = document.querySelectorAll('button');
-
-  for (const button of buttons) {
-    const buttonId = button.getAttribute('id');
-    const btnText = buttonData[buttonId];
-
-    if (btnText) {
-      button.textContent = btnText;
+    if (text) {
+      if (tooltip) {
+        new bootstrap.Tooltip(element, {title:text});
+      } else {
+        element.textContent = text
+      }
     }
   }
 }
@@ -75,7 +40,9 @@ export function getJsonValue(key) {
   return undefined;
 }
 
-setTitle(data.title);
-setLabels(data.labels);
-setButtons(data.buttons);
-setTooltips(data.tooltips);
+setTitle(data.headers.headerCalculator);
+setTextContent('h3', 'id', data.headers);
+setTextContent('label', 'for', data.labels);
+setTextContent('button', 'id', data.buttons);
+setTextContent('a', 'id', data.links);
+setTextContent('span', 'id', data.tooltips, true);

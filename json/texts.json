@@ -1,37 +1,34 @@
 {
   "tooltips": {
-    "principal": "The amount of money you will start depositing.",
-    "monthlyContribution": "The amount of money you can monthly invest after your initial deposit.",
-    "increaseRate": "The percentage you can add to your monthly contributions.",
-    "interest": "The average growth you expect to earn on your investment.",
-    "years": "The number of years depositing monthly contributions."
+    "principalTooltip": "The amount of money you will start depositing.",
+    "monthlyContributionTooltip": "The amount of money you can monthly invest after your initial deposit.",
+    "increaseRateTooltip": "The percentage you can add to your monthly contributions.",
+    "interestTooltip": "The average growth you expect to earn on your investment.",
+    "yearsTooltip": "The number of years depositing monthly contributions."
   },
-  "labels": [
-    {
-      "for": "principal",
-      "text": "Initial deposit:"
-    },
-    {
-      "for": "monthlyContribution",
-      "text": "Initial monthly contribution:"
-    },
-    {
-      "for": "increaseRate",
-      "text": "Monthly contribution increase rate:"
-    },
-    {
-      "for": "interest",
-      "text": "Estimated Interest rate:"
-    },
-    {
-      "for": "years",
-      "text": "Number of years:"
-    }
-  ],
+  "labels": {
+    "principal": "Initial deposit:",
+    "monthlyContribution": "Initial monthly contribution:",
+    "increaseRate": "Monthly contribution increase rate:",
+    "interest": "Estimated Interest rate:",
+    "years": "Number of years:",
+    "name": "Name:",
+    "email": "Email Address:",
+    "message": "Message:"
+  },
   "buttons": {
     "calculate": "Calculate",
-    "clear": "Clear"
+    "clear": "Clear",
+    "sendEmail": "Send Email"
   },
-  "title": "Compound Interest Calculator",
+  "links": {
+    "home": "Home",
+    "faq": "FAQs",
+    "about": "About"
+  },
+  "headers": {
+    "headerCalculator": "Compound Interest Calculator",
+    "headerContact": "Contact Us"
+  },
   "totalAmount": "Total Amount:"
 }
