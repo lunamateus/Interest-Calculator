@@ -23,7 +23,6 @@ function getMonthYears(nMonths) {
       .toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
     monthYearStrings.push(formattedString);
 
-    // Update month and year for the next iteration
     currentMonth++;
     if (currentMonth >= 12) {
       currentMonth = 0;
@@ -66,8 +65,7 @@ export function generateData(fields) {
   }
   thead.appendChild(headerRow);
   
-  for (let month of investment.getMonths()) {  
-    // Create and populate row elements
+  for (let month of investment.getMonths()) {
     const row = document.createElement("tr");
 
     appendToParent("th", row, month, "row");

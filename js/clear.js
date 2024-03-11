@@ -1,8 +1,8 @@
-const clearButton = document.getElementById("clear"); // Select the button element
-const numberFields = document.querySelectorAll('#calculator-form input[type="number"]'); // Select only number input fields
+const clearButton = document.getElementById("clear");
+const numberFields = document.querySelectorAll('#calculator-form input[type="number"]');
 
 clearButton.addEventListener('click', () => {
   numberFields.forEach(field => {
-    field.value = ""; // Clear the value of each number field
+    field.value = "";
   });
 });
