@@ -86,7 +86,8 @@ export function generateData(fields) {
     investment.getMonths(), 
     investment.getTotalAmounts(),
     investment.getInvestedAmounts(),
-    `${getJsonValue("totalAmount")} ${formatToCurrency(investment.getAmount(investment.getTotalMonths()))}`);
+    getJsonValue("chart"),
+    `${formatToCurrency(investment.getAmount(investment.getTotalMonths()))}`);
 
   return table;
 }

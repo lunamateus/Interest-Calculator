@@ -30,5 +30,12 @@
     "headerCalculator": "Compound Interest Calculator",
     "headerContact": "Contact Us"
   },
+  "chart": {
+    "total": "Total",
+    "invested": "Invested",
+    "xLabel": "Months",
+    "tooltip": "Month ",
+    "head": "Total Amount:"
+  },
   "totalAmount": "Total Amount:"
 }

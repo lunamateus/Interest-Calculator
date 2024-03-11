@@ -1,12 +1,12 @@
 import {formatToCurrency} from './table.js';
 
-export function drawChart(time, total, increments, head) {
+export function drawChart(dates, total, increments, texts, amount) {
     return new Chart("evoChart", {
       type: "line",
       data: {
-        labels: time,
+        labels: dates,
         datasets: [{
-          label: `Total`,
+          label: texts.total,
           fill: false,
           lineTension: 0.1,
           backgroundColor: "rgba(34,57,89,1.0)", //Berkeley Blue
@@ -14,12 +14,11 @@ export function drawChart(time, total, increments, head) {
           data: total
         },
         {
-          label: `Invested`,
+          label: texts.invested,
           fill: true,
           lineTension: 0.1,
           backgroundColor: "rgba(239,91,91,0.2)", //Bittersweet
           borderColor: "rgba(239,91,91,1)",
-          pointRadius: 0,
           data: increments
         }]
       },
@@ -32,18 +31,25 @@ export function drawChart(time, total, increments, head) {
         plugins : {
           title: {
             display: true,
-            text: head,
+            text: `${texts.head} ${amount}`,
             font: {
               size: 20
             }
           },
+          tooltip: {
+            callbacks: {
+              beforeTitle: function(context) {
+                return texts.tooltip;
+              }
+            }
+          }
         },
         scales: {
           x: {
             display: true,
             title: {
               display: true,
-              text: 'Months',
+              text: texts.xLabel,
               color: '#000',
             }
           },
