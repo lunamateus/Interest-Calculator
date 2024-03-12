@@ -19,7 +19,9 @@
   "buttons": {
     "calculate": "Calculate",
     "clear": "Clear",
-    "sendEmail": "Send Email"
+    "sendEmail": "Send Email",
+    "showTable": "Show table",
+    "hideTable": "Hide table"
   },
   "links": {
     "home": "Home",

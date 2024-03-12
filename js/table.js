@@ -1,6 +1,7 @@
 import {Investment} from './investment.js';
 import {drawChart} from './chart.js';
 import { getJsonValue } from './utils.js';
+import data from "../json/texts.json" assert { type: "json" };
 
 let chart = new Chart("evoChart", {});
 
@@ -37,8 +38,26 @@ export function formatToCurrency(content) {
   return `$${content.toLocaleString()}`;
 }
 
+function createCollapseButton(id, hiddenText, shownText) {
+  const button = document.createElement('button');
+  button.classList.add('btn', 'btn-outline-dark', 'collapsed');
+  button.setAttribute('type', 'button');
+  button.setAttribute('data-bs-toggle', 'collapse');
+  button.setAttribute('data-bs-target', '#' + id);
+  button.setAttribute('aria-expanded', 'false');
+  button.setAttribute('aria-controls', id);
+  button.textContent = hiddenText;
+  button.addEventListener('click', function () {
+    this.textContent = this.classList.contains('collapsed') ? hiddenText : shownText;
+  });
+
+  return button;
+}
+
 export function generateData(fields) {
   const columns = ["Month", "Date", "Deposited", "Total Amount"];
+  const collapseDiv = document.createElement("div");
+  const tableDiv = document.createElement("div");
   const table = document.createElement("table");
   const thead = document.createElement("thead");
   const tbody = document.createElement("tbody");
@@ -50,10 +69,13 @@ export function generateData(fields) {
     parseFloat(document.getElementById(fields[3]).value) / 100, // interest
     parseInt(document.getElementById(fields[4]).value) // years
   );
+
   const dates = getMonthYears(investment.getTotalMonths() + 1);
   
   investment.grow();
   
+  tableDiv.classList.add("collapse");
+  tableDiv.setAttribute("id", "table");
   table.classList.add("table", "table-hover");
   thead.classList.add("table-dark");
   
@@ -78,6 +100,11 @@ export function generateData(fields) {
   
   table.appendChild(thead);
   table.appendChild(tbody);
+  tableDiv.appendChild(table);
+  collapseDiv.classList.add("d-grid", "gap-2");
+  collapseDiv.appendChild(
+    createCollapseButton("table", data.buttons.showTable, data.buttons.hideTable));
+  collapseDiv.appendChild(tableDiv);
 
   chart.destroy();
   chart = drawChart(
@@ -87,6 +114,5 @@ export function generateData(fields) {
     getJsonValue("chart"),
     `${formatToCurrency(investment.getAmount(investment.getTotalMonths()))}`);
 
-  return table;
+  return collapseDiv;
 }
-
