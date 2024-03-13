@@ -1,7 +1,6 @@
 import {Investment} from './investment.js';
 import {drawChart} from './chart.js';
-import { getJsonValue, dataT } from './utils.js';
-import data from "../json/en.json" assert { type: "json" };
+import { getJsonValue, userLang, dataT } from './utils.js';
 
 let chart = new Chart("evoChart", {});
 const buttonsText = dataT.buttons;
@@ -13,7 +12,7 @@ function appendToParent(element, parent, content = '', scope = '') {
   parent.appendChild(child);
 }
 
-function getMonthYears(nMonths) {
+function getMonthYears(nMonths, lang) {
   const monthYearStrings = [];
   const currentDate = new Date();
 
@@ -22,7 +21,7 @@ function getMonthYears(nMonths) {
 
   for (let i = 0; i < nMonths; i++) {
     const formattedString = new Date(currentYear, currentMonth, 1)
-      .toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+      .toLocaleDateString(lang, { month: 'long', year: 'numeric' });
     monthYearStrings.push(formattedString);
 
     currentMonth++;
@@ -55,8 +54,12 @@ function createCollapseButton(id, hiddenText, shownText) {
   return button;
 }
 
+function getColumnNames(data) {
+  return [data.month, data.date, data.invested, data.totalAmount];
+}
+
 export function generateData(fields) {
-  const columns = ["Month", "Date", "Deposited", "Total Amount"];
+  const columns = getColumnNames(dataT.chart);
   const collapseDiv = document.createElement("div");
   const tableDiv = document.createElement("div");
   const table = document.createElement("table");
@@ -71,7 +74,7 @@ export function generateData(fields) {
     parseInt(document.getElementById(fields[4]).value) // years
   );
 
-  const dates = getMonthYears(investment.getTotalMonths() + 1);
+  const dates = getMonthYears(investment.getTotalMonths() + 1, userLang);
   
   investment.grow();
 

@@ -1,4 +1,4 @@
-const userLang = (navigator.language || navigator.browserLanguage).substring(0, 2);
+export const userLang = (navigator.language || navigator.browserLanguage).substring(0, 2);
 export const dataT = await loadTranslations(userLang);
 
 async function loadTranslations(lang) {

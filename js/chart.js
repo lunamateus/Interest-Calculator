@@ -31,7 +31,7 @@ export function drawChart(dates, total, increments, texts, amount) {
         plugins : {
           title: {
             display: true,
-            text: `${texts.head} ${amount}`,
+            text: `${texts.totalAmount}: ${amount}`,
             font: {
               size: 20
             }
@@ -39,7 +39,7 @@ export function drawChart(dates, total, increments, texts, amount) {
           tooltip: {
             callbacks: {
               beforeTitle: function(context) {
-                return texts.tooltip;
+                return texts.month;
               }
             }
           }
@@ -49,7 +49,7 @@ export function drawChart(dates, total, increments, texts, amount) {
             display: true,
             title: {
               display: true,
-              text: texts.xLabel,
+              text: texts.months,
               color: '#000',
             }
           },

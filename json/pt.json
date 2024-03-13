@@ -35,9 +35,10 @@
   "chart": {
     "total": "Total",
     "invested": "Investido",
-    "xLabel": "Meses",
-    "tooltip": "Mês",
-    "head": "Valor Total:"
+    "months": "Meses",
+    "month": "Mês",
+    "totalAmount": "Valor Total",
+    "date": "Data"
   },
   "totalAmount": "Valor Total:"
 }
