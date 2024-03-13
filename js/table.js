@@ -1,9 +1,10 @@
 import {Investment} from './investment.js';
 import {drawChart} from './chart.js';
-import { getJsonValue } from './utils.js';
-import data from "../json/texts.json" assert { type: "json" };
+import { getJsonValue, dataT } from './utils.js';
+import data from "../json/en.json" assert { type: "json" };
 
 let chart = new Chart("evoChart", {});
+const buttonsText = dataT.buttons;
 
 function appendToParent(element, parent, content = '', scope = '') {
   const child = document.createElement(element);
@@ -73,7 +74,7 @@ export function generateData(fields) {
   const dates = getMonthYears(investment.getTotalMonths() + 1);
   
   investment.grow();
-  
+
   tableDiv.classList.add("collapse");
   tableDiv.setAttribute("id", "table");
   table.classList.add("table", "table-hover");
@@ -103,7 +104,7 @@ export function generateData(fields) {
   tableDiv.appendChild(table);
   collapseDiv.classList.add("d-grid", "gap-2");
   collapseDiv.appendChild(
-    createCollapseButton("table", data.buttons.showTable, data.buttons.hideTable));
+    createCollapseButton("table", buttonsText.showTable, buttonsText.hideTable));
   collapseDiv.appendChild(tableDiv);
 
   chart.destroy();
@@ -111,7 +112,7 @@ export function generateData(fields) {
     investment.getMonths(), 
     investment.getTotalAmounts(),
     investment.getInvestedAmounts(),
-    getJsonValue("chart"),
+    getJsonValue('chart'),
     `${formatToCurrency(investment.getAmount(investment.getTotalMonths()))}`);
 
   return collapseDiv;

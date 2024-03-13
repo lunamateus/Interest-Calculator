@@ -1,0 +1,43 @@
+{
+  "tooltips": {
+    "principalTooltip": "O valor inicial que você irá depositar.",
+    "monthlyContributionTooltip": "O valor que você pode investir mensalmente após o depósito inicial.",
+    "increaseRateTooltip": "O percentual que você pode adicionar às suas contribuições mensais.",
+    "interestTooltip": "O crescimento médio que você espera ganhar com seu investimento.",
+    "yearsTooltip": "O número de anos depositando contribuições mensais."
+  },
+  "labels": {
+    "principal": "Depósito inicial:",
+    "monthlyContribution": "Contribuição mensal inicial:",
+    "increaseRate": "Taxa de aumento da contribuição mensal:",
+    "interest": "Taxa de juros estimada:",
+    "years": "Número de anos:",
+    "name": "Nome:",
+    "email": "Endereço de e-mail:",
+    "message": "Mensagem:"
+  },
+  "buttons": {
+    "calculate": "Calcular",
+    "clear": "Limpar",
+    "sendEmail": "Enviar e-mail",
+    "showTable": "Mostrar tabela",
+    "hideTable": "Ocultar tabela"
+  },
+  "links": {
+    "home": "Página inicial",
+    "faq": "Perguntas frequentes",
+    "about": "Sobre nós"
+  },
+  "headers": {
+    "headerCalculator": "Calculadora de Juros Compostos",
+    "headerContact": "Contato"
+  },
+  "chart": {
+    "total": "Total",
+    "invested": "Investido",
+    "xLabel": "Meses",
+    "tooltip": "Mês",
+    "head": "Valor Total:"
+  },
+  "totalAmount": "Valor Total:"
+}

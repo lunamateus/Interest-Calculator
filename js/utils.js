@@ -1,4 +1,16 @@
-import data from "../json/texts.json" assert { type: "json" };
+const userLang = (navigator.language || navigator.browserLanguage).substring(0, 2);
+export const dataT = await loadTranslations(userLang);
+
+async function loadTranslations(lang) {
+  const file = `json/${lang == 'pt' ? 'pt' : 'en'}.json`; 
+  try {
+    const response = await fetch(file);
+    const jsonData = await response.json();
+    return jsonData;
+  } catch (error) {
+    console.error('Error loading translation file:', error);
+  }
+}
 
 function setTitle(titleData) {
   const titles = document.querySelectorAll('title');
@@ -25,11 +37,11 @@ function setTextContent(elementType, attribute, data, tooltip = false) {
 }
 
 export function getJsonValue(key) {
-  if (typeof data === 'object' && data !== null) {
-    if (key in data) {
-      return data[key];
+  if (typeof dataT === 'object' && dataT !== null) {
+    if (key in dataT) {
+      return dataT[key];
     } else {
-      for (const value of Object.values(data)) {
+      for (const value of Object.values(dataT)) {
         const result = getJsonValue(value, key);
         if (result !== undefined) {
           return result;
@@ -40,9 +52,9 @@ export function getJsonValue(key) {
   return undefined;
 }
 
-setTitle(data.headers.headerCalculator);
-setTextContent('h3', 'id', data.headers);
-setTextContent('label', 'for', data.labels);
-setTextContent('button', 'id', data.buttons);
-setTextContent('a', 'id', data.links);
-setTextContent('span', 'id', data.tooltips, true);
+setTitle(dataT.headers.headerCalculator);
+setTextContent('h3', 'id', dataT.headers);
+setTextContent('label', 'for', dataT.labels);
+setTextContent('button', 'id', dataT.buttons);
+setTextContent('a', 'id', dataT.links);
+setTextContent('span', 'id', dataT.tooltips, true);
