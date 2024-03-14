@@ -40,5 +40,9 @@
     "totalAmount": "Total Amount",
     "date": "Date"
   },
-  "totalAmount": "Total Amount:"
+  "language": {
+    "language": "Language",
+    "en": "English",
+    "pt": "Português"
+  }
 }

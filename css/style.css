@@ -25,3 +25,7 @@ canvas {
 textarea {
     height: 10rem;
 }
+
+.dark {
+    color: rgba(255, 255, 255, 1);
+}

@@ -1,6 +1,8 @@
 export const userLang = (navigator.language || navigator.browserLanguage).substring(0, 2);
 export const dataT = await loadTranslations(userLang);
 
+document.getElementById("language").setAttribute('data-text', userLang);
+
 async function loadTranslations(lang) {
   const file = `json/${lang == 'pt' ? 'pt' : 'en'}.json`; 
   try {
@@ -54,7 +56,9 @@ export function getJsonValue(key) {
 
 setTitle(dataT.headers.headerCalculator);
 setTextContent('h3', 'id', dataT.headers);
+setTextContent('a', 'data-text', dataT.links);
+setTextContent('button', 'data-text', dataT.language);
 setTextContent('label', 'for', dataT.labels);
 setTextContent('button', 'id', dataT.buttons);
-setTextContent('a', 'id', dataT.links);
 setTextContent('span', 'id', dataT.tooltips, true);
+setTextContent('a', 'data-text', dataT.language);

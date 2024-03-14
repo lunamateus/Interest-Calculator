@@ -24,7 +24,7 @@
     "hideTable": "Ocultar tabela"
   },
   "links": {
-    "home": "Página inicial",
+    "home": "Início",
     "faq": "Perguntas frequentes",
     "about": "Sobre nós"
   },
@@ -40,5 +40,9 @@
     "totalAmount": "Valor Total",
     "date": "Data"
   },
-  "totalAmount": "Valor Total:"
+  "language": {
+    "language": "Idioma",
+    "en": "English",
+    "pt": "Português"
+  }
 }
