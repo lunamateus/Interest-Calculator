@@ -1,10 +1,5 @@
 import { generateData } from './table.js';
 
-const resultsDiv = document.getElementById("results");
-const currentYearSpan = document.getElementById("currentYear");
-
-currentYearSpan.textContent = new Date().getFullYear();
-
 document.getElementById("calculator-form").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent default form submission
   //Validate input data
@@ -26,6 +21,5 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
     return;
   }
 
-  resultsDiv.innerHTML = ""; // Clear existing content
-  resultsDiv.appendChild(generateData(fields));
+  generateData(fields);
 });

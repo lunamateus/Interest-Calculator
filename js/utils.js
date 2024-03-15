@@ -1,7 +1,18 @@
-export const userLang = (navigator.language || navigator.browserLanguage).substring(0, 2);
-export const dataT = await loadTranslations(userLang);
+export let userLang = (navigator.language || navigator.browserLanguage).substring(0, 2);
+export let dataT = await loadTranslations(userLang);
+const langButtons = document.querySelectorAll(".lang-link");
+const currentYearSpan = document.getElementById("currentYear");
 
-document.getElementById("language").setAttribute('data-text', userLang);
+langButtons.forEach(function(button) {
+  button.addEventListener("click", async function() {
+      const newLang = this.dataset.text;
+      const newData = await loadTranslations(newLang);
+
+      userLang = newLang;
+      dataT = newData;
+      loadTexts(dataT, userLang);
+  });
+});
 
 async function loadTranslations(lang) {
   const file = `json/${lang == 'pt' ? 'pt' : 'en'}.json`; 
@@ -54,11 +65,18 @@ export function getJsonValue(key) {
   return undefined;
 }
 
-setTitle(dataT.headers.headerCalculator);
-setTextContent('h3', 'id', dataT.headers);
-setTextContent('a', 'data-text', dataT.links);
-setTextContent('button', 'data-text', dataT.language);
-setTextContent('label', 'for', dataT.labels);
-setTextContent('button', 'id', dataT.buttons);
-setTextContent('span', 'id', dataT.tooltips, true);
-setTextContent('a', 'data-text', dataT.language);
+function loadTexts(data, lang) {
+  document.getElementById("language").setAttribute('data-text', lang);
+
+  setTitle(data.headers.headerCalculator);
+  setTextContent('h3', 'id', data.headers);
+  setTextContent('a', 'data-text', data.links);
+  setTextContent('button', 'data-text', data.language);
+  setTextContent('label', 'for', data.labels);
+  setTextContent('button', 'id', data.buttons);
+  setTextContent('span', 'id', data.tooltips, true);
+  setTextContent('a', 'data-text', data.language);
+}
+
+currentYearSpan.textContent = new Date().getFullYear();
+loadTexts(dataT, userLang);

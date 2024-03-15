@@ -3,7 +3,13 @@ import {drawChart} from './chart.js';
 import { getJsonValue, userLang, dataT } from './utils.js';
 
 let chart = new Chart("evoChart", {});
+const resultsDiv = document.getElementById("results");
 const buttonsText = dataT.buttons;
+
+export function clearData() {
+  chart.destroy();
+  resultsDiv.innerHTML = "";
+}
 
 function appendToParent(element, parent, content = '', scope = '') {
   const child = document.createElement(element);
@@ -76,6 +82,7 @@ export function generateData(fields) {
 
   const dates = getMonthYears(investment.getTotalMonths() + 1, userLang);
   
+  clearData();
   investment.grow();
 
   tableDiv.classList.add("collapse");
@@ -110,7 +117,6 @@ export function generateData(fields) {
     createCollapseButton("table", buttonsText.showTable, buttonsText.hideTable));
   collapseDiv.appendChild(tableDiv);
 
-  chart.destroy();
   chart = drawChart(
     investment.getMonths(), 
     investment.getTotalAmounts(),
@@ -118,5 +124,5 @@ export function generateData(fields) {
     getJsonValue('chart'),
     `${formatToCurrency(investment.getAmount(investment.getTotalMonths()))}`);
 
-  return collapseDiv;
+  resultsDiv.appendChild(collapseDiv);
 }
