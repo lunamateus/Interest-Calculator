@@ -3,10 +3,10 @@ import {drawChart} from './chart.js';
 import { getJsonValue, userLang, dataT } from './utils.js';
 
 let chart = new Chart("evoChart", {});
+let buttonsText;
 const resultsDiv = document.getElementById("results");
-const buttonsText = dataT.buttons;
 
-export function clearData() {
+function clearData() {
   chart.destroy();
   resultsDiv.innerHTML = "";
 }
@@ -64,7 +64,7 @@ function getColumnNames(data) {
   return [data.month, data.date, data.invested, data.totalAmount];
 }
 
-export function generateData(fields) {
+export function generateData() {
   const columns = getColumnNames(dataT.chart);
   const collapseDiv = document.createElement("div");
   const tableDiv = document.createElement("div");
@@ -73,17 +73,18 @@ export function generateData(fields) {
   const tbody = document.createElement("tbody");
   const headerRow = document.createElement("tr");
   const investment = new Investment(
-    parseFloat(document.getElementById(fields[0]).value), // principal
-    parseFloat(document.getElementById(fields[1]).value), // monthlyContribution
-    parseFloat(document.getElementById(fields[2]).value) / 100, // increaseRate
-    parseFloat(document.getElementById(fields[3]).value) / 100, // interest
-    parseInt(document.getElementById(fields[4]).value) // years
+    parseFloat(document.getElementById('principal').value), // principal
+    parseFloat(document.getElementById('monthlyContribution').value), // monthlyContribution
+    parseFloat(document.getElementById('increaseRate').value) / 100, // increaseRate
+    parseFloat(document.getElementById('interest').value) / 100, // interest
+    parseInt(document.getElementById('years').value) // years
   );
 
   const dates = getMonthYears(investment.getTotalMonths() + 1, userLang);
   
   clearData();
   investment.grow();
+  buttonsText = dataT.buttons;
 
   tableDiv.classList.add("collapse");
   tableDiv.setAttribute("id", "table");

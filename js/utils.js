@@ -1,18 +1,7 @@
-export let userLang = (navigator.language || navigator.browserLanguage).substring(0, 2);
-export let dataT = await loadTranslations(userLang);
+export let userLang;
+export let dataT;
 const langButtons = document.querySelectorAll(".lang-link");
 const currentYearSpan = document.getElementById("currentYear");
-
-langButtons.forEach(function(button) {
-  button.addEventListener("click", async function() {
-      const newLang = this.dataset.text;
-      const newData = await loadTranslations(newLang);
-
-      userLang = newLang;
-      dataT = newData;
-      loadTexts(dataT, userLang);
-  });
-});
 
 async function loadTranslations(lang) {
   const file = `json/${lang == 'pt' ? 'pt' : 'en'}.json`; 
@@ -77,6 +66,27 @@ function loadTexts(data, lang) {
   setTextContent('span', 'id', data.tooltips, true);
   setTextContent('a', 'data-text', data.language);
 }
+
+function getLocalLanguage() {
+  return (navigator.language || navigator.browserLanguage).substring(0, 2);
+}
+
+userLang = localStorage.getItem("userLang") ? localStorage.getItem("userLang") : getLocalLanguage();
+dataT = await loadTranslations(userLang);
+
+langButtons.forEach(function(button) {
+  button.addEventListener("click", async function() {
+    const newLang = this.dataset.text;
+    localStorage.setItem("userLang", newLang); // Save the new language
+    const newTexts = await loadTranslations(newLang);
+
+    userLang = newLang;
+    dataT = newTexts;
+    loadTexts(dataT, userLang);
+    document.getElementById("results").innerHTML = "";
+    document.getElementById("evoChart").style.display = "none";
+  });
+});
 
 currentYearSpan.textContent = new Date().getFullYear();
 loadTexts(dataT, userLang);

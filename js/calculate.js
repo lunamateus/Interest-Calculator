@@ -21,5 +21,5 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
     return;
   }
 
-  generateData(fields);
+  generateData();
 });
