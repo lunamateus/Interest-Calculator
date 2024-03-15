@@ -1,5 +1,8 @@
 import { generateData } from './table.js';
 
+const clearButton = document.getElementById("clear");
+const numberFields = document.querySelectorAll('#calculator-form input[type="number"]');
+
 document.getElementById("calculator-form").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent default form submission
   //Validate input data
@@ -22,4 +25,10 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
   }
 
   generateData();
+});
+
+clearButton.addEventListener('click', () => {
+  numberFields.forEach(field => {
+    field.value = "";
+  });
 });
