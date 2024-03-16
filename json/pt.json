@@ -43,5 +43,47 @@
   "language": {
     "en": "English",
     "pt": "Português"
-  }
+  },
+  "faq": {
+    "question1": {
+      "question": "O que é o projeto Calculadora de Juros?",
+      "answer": "Uma ferramenta para calcular o valor futuro de um investimento considerando juros compostos."
+    },
+    "question2": {
+      "question": "O que são juros compostos?",
+      "answer": "Juros ganhos tanto sobre o valor principal inicial quanto sobre os juros acumulados de períodos anteriores."
+    },
+    "question3": {
+      "question": "Qual é a fórmula usada na Calculadora de Juros para juros compostos?",
+      "answer": "Valor Futuro (VF) = P * (1 + r/n) ^ (n * t)"
+    },
+    "question4": {
+      "question": "Por que os juros compostos são importantes para investimentos?",
+      "answer": "Os juros compostos permitem que seu dinheiro cresça exponencialmente ao longo do tempo, mesmo com uma pequena taxa de juros se compostos com frequência."
+    },
+    "question5": {
+      "question": "Como a Calculadora de Juros beneficia os investidores?",
+      "answer": "A Calculadora de Juros ajuda os investidores a planejar o futuro, comparar opções de investimento e entender o impacto do tempo sobre seus investimentos."
+    },
+    "question6": {
+      "question": "Existem limitações para a Calculadora de Juros?",
+      "answer": "O projeto pode não levar em conta impostos e taxas, inflação ou flutuações do mercado."
+    },
+    "question7": {
+      "question": "Quais são alguns recursos adicionais que a Calculadora de Juros irá incluir?",
+      "answer": "Seleção do tipo de investimento, ajuste pela inflação e ferramentas de visualização."
+    },
+    "question8": {
+      "question": "Quais são algumas aplicações do mundo real dos juros compostos além de investimentos?",
+      "answer": "Os juros compostos se aplicam a contas poupança, acúmulo de dívidas e pagamentos de empréstimos."
+    },
+    "question9": {
+      "question": "Os juros compostos são sempre benéficos?",
+      "answer": "Não, os juros compostos podem ser prejudiciais para dívidas. Dívidas não pagas com altas taxas de juros podem rapidamente sair do controle devido à capitalização."
+    },
+    "question10": {
+      "question": "Quais são alguns recursos para aprender mais sobre juros compostos e finanças pessoais?",
+      "answer": "Muitos recursos online e sites educacionais oferecem informações sobre juros compostos e conceitos básicos de finanças pessoais. Instituições financeiras e corretoras de investimento geralmente fornecem ferramentas educacionais e calculadoras."
+    }
+  }  
 }

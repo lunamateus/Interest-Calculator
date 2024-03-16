@@ -43,5 +43,47 @@
   "language": {
     "en": "English",
     "pt": "Português"
+  },
+  "faq": {
+    "question1": {
+      "question": "What is the Interest Calculator project about?",
+      "answer": "A tool to calculate the future value of an investment considering compound interest."
+    },
+    "question2": {
+      "question": "What is compound interest?",
+      "answer": "Interest earned on both the initial principal amount and the accumulated interest from previous periods."
+    },
+    "question3": {
+      "question": "What's the formula used in the Interest Calculator project for compound interest?",
+      "answer": "Future Value (FV) = P * (1 + r/n) ^ (n * t)"
+    },
+    "question4": {
+      "question": "Why is compound interest important for investments?",
+      "answer": "Compound interest allows your money to grow exponentially over time, even with a small interest rate if compounded frequently."
+    },
+    "question5": {
+      "question": "How does the Interest Calculator project benefit investors?",
+      "answer": "The Interest Calculator helps investors plan for the future, compare investment options, and understand the impact of time on their investments."
+    },
+    "question6": {
+      "question": "Are there any limitations to the Interest Calculator project?",
+      "answer": "The project might not consider taxes and fees, inflation, or market fluctuations."
+    },
+    "question7": {
+      "question": "What are some additional features the Interest Calculator project will include?",
+      "answer": "Investment type selection, inflation adjustment, and visualization tools."
+    },
+    "question8": {
+      "question": "What are some real-world applications of compound interest besides investments?",
+      "answer": "Compound interest applies to savings accounts, debt accumulation, and loan payments."
+    },
+    "question9": {
+      "question": "Is compound interest always beneficial?",
+      "answer": "No, compound interest can be detrimental for debt. Unpaid debts with high-interest rates can quickly grow out of control due to compounding."
+    },
+    "question10": {
+      "question": "What are some resources to learn more about compound interest and personal finance?",
+      "answer": "Many online resources and educational websites offer information about compound interest and personal finance basics. Financial institutions and investment firms often provide educational tools and calculators."
+    }
   }
 }
