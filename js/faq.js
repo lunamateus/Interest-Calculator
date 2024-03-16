@@ -1,6 +1,4 @@
-import {dataT} from './utils.js';
-
-function createAccordion(questionsData) {
+export function createAccordion(questionsData) {
   const accordionContainer = document.getElementById('faqAccordion');
 
   for (const question in questionsData) {
@@ -9,7 +7,7 @@ function createAccordion(questionsData) {
   }
 }
 
-function createAccordionItem(questionData, number) {
+export function createAccordionItem(questionData, number) {
   const { question, answer } = questionData; // Destructuring assignment
 
   const accordionItem = document.createElement('div');
@@ -45,7 +43,3 @@ function createAccordionItem(questionData, number) {
 
   return accordionItem;
 }
-
-const questionsData = dataT.faq;
-
-createAccordion(questionsData);

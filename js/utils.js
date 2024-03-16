@@ -1,3 +1,5 @@
+import {createAccordion, createAccordionItem} from './faq.js';
+
 export let userLang;
 export let dataT;
 const langButtons = document.querySelectorAll(".lang-link");
@@ -65,6 +67,9 @@ function loadTexts(data, lang) {
   setTextContent('button', 'id', data.buttons);
   setTextContent('span', 'id', data.tooltips, true);
   setTextContent('a', 'data-text', data.language);
+  if (document.location.pathname == '/faq.html') {
+    createAccordion(data.faq);
+  }
 }
 
 function getLocalLanguage() {
@@ -82,9 +87,15 @@ langButtons.forEach(function(button) {
 
     userLang = newLang;
     dataT = newTexts;
+
+    if (document.location.pathname == '/faq.html') {
+      document.getElementById("faqAccordion").innerHTML = "";
+    } else if (document.location.pathname == '/index.html'){
+      document.getElementById("results").innerHTML = "";
+      document.getElementById("evoChart").style.display = "none";
+    }
+    
     loadTexts(dataT, userLang);
-    document.getElementById("results").innerHTML = "";
-    document.getElementById("evoChart").style.display = "none";
   });
 });
 

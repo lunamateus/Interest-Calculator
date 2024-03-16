@@ -55,7 +55,7 @@
     },
     "question3": {
       "question": "Qual é a fórmula usada na Calculadora de Juros para juros compostos?",
-      "answer": "Valor Futuro (VF) = P * (1 + r/n) ^ (n * t)"
+      "answer": "Valor Futuro (VF) = P * (1 + r/n) ^ (n * t) onde P: Valor principal (investimento inicial), r: Taxa de juros anual (em decimal), n: Número de vezes que os juros são compostos por ano (por exemplo, mensalmente = 12, trimestralmente = 4), t: Número total de anos."
     },
     "question4": {
       "question": "Por que os juros compostos são importantes para investimentos?",

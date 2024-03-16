@@ -55,7 +55,7 @@
     },
     "question3": {
       "question": "What's the formula used in the Interest Calculator project for compound interest?",
-      "answer": "Future Value (FV) = P * (1 + r/n) ^ (n * t)"
+      "answer": "Future Value (FV) = P * (1 + r/n) ^ (n * t) where P: Principal amount (initial investment), r: Annual interest rate (as a decimal), n: Number of times interest is compounded per year (e.g., monthly = 12, quarterly = 4), t: Total number of years"
     },
     "question4": {
       "question": "Why is compound interest important for investments?",
