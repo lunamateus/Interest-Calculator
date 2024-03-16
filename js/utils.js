@@ -1,4 +1,4 @@
-import {createAccordion, createAccordionItem} from './faq.js';
+import {createAccordion} from './faq.js';
 
 export let userLang;
 export let dataT;
@@ -68,6 +68,7 @@ function loadTexts(data, lang) {
   setTextContent('span', 'id', data.tooltips, true);
   setTextContent('a', 'data-text', data.language);
   if (document.location.pathname == '/faq.html') {
+    setTextContent('h3', 'data-text', data.links);
     createAccordion(data.faq);
   }
 }
@@ -94,7 +95,7 @@ langButtons.forEach(function(button) {
       document.getElementById("results").innerHTML = "";
       document.getElementById("evoChart").style.display = "none";
     }
-    
+
     loadTexts(dataT, userLang);
   });
 });
