@@ -16,10 +16,12 @@ async function loadTranslations(lang) {
   }
 }
 
-function setTitle(titleData) {
+function setTitle(pages, website) {
   const titles = document.querySelectorAll('title');
+  const thisPage = (window.location.pathname).split("/").pop().split(".")[0];
+
   for (const title of titles) {
-    title.textContent = titleData;
+    title.textContent = `${pages[thisPage]} | ${website}`;
   }
 }
 
@@ -59,7 +61,7 @@ export function getJsonValue(key) {
 function loadTexts(data, lang) {
   document.getElementById("language").setAttribute('data-text', lang);
 
-  setTitle(data.headers.headerCalculator);
+  setTitle(data.links, data.headers.headerCalculator);
   setTextContent('h3', 'id', data.headers);
   setTextContent('a', 'data-text', data.links);
   setTextContent('button', 'data-text', data.language);
@@ -83,7 +85,7 @@ dataT = await loadTranslations(userLang);
 langButtons.forEach(function(button) {
   button.addEventListener("click", async function() {
     const newLang = this.dataset.text;
-    localStorage.setItem("userLang", newLang); // Save the new language
+    localStorage.setItem("userLang", newLang);
     const newTexts = await loadTranslations(newLang);
 
     userLang = newLang;
