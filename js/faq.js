@@ -7,7 +7,7 @@ export function createAccordion(questionsData) {
   }
 }
 
-export function createAccordionItem(questionData, number) {
+function createAccordionItem(questionData, number) {
   const { question, answer } = questionData;
 
   const accordionItem = document.createElement('div');

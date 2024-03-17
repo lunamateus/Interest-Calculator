@@ -18,7 +18,9 @@ async function loadTranslations(lang) {
 
 function setTitle(pages, website) {
   const titles = document.querySelectorAll('title');
-  const thisPage = (window.location.pathname).split("/").pop().split(".")[0];
+  let thisPage = (window.location.pathname).split("/").pop().split(".")[0];
+
+  thisPage = thisPage == undefined ? pages['index'] : thisPage;
 
   for (const title of titles) {
     title.textContent = `${pages[thisPage]} | ${website}`;
@@ -69,7 +71,7 @@ function loadTexts(data, lang) {
   setTextContent('button', 'id', data.buttons);
   setTextContent('span', 'id', data.tooltips, true);
   setTextContent('a', 'data-text', data.language);
-  if (document.location.pathname == '/faq.html') {
+  if (document.location.pathname.includes('faq.html')) {
     setTextContent('h3', 'data-text', data.links);
     createAccordion(data.faq);
   }
@@ -91,9 +93,9 @@ langButtons.forEach(function(button) {
     userLang = newLang;
     dataT = newTexts;
 
-    if (document.location.pathname == '/faq.html') {
+    if (document.location.pathname.includes('faq.html')) {
       document.getElementById("faqAccordion").innerHTML = "";
-    } else if (document.location.pathname == '/index.html'){
+    } else if (document.location.pathname.includes('index.html')){
       document.getElementById("results").innerHTML = "";
       document.getElementById("evoChart").style.display = "none";
     }
