@@ -2,6 +2,7 @@ import { generateData } from './table.js';
 
 const clearButton = document.getElementById("clear");
 const numberFields = document.querySelectorAll('#calculator-form input[type="number"]');
+const chart = document.getElementById("evoChart");
 
 document.getElementById("calculator-form").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent default form submission
@@ -25,6 +26,7 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
   }
 
   generateData();
+  chart.scrollIntoView({ behavior: "smooth" });
 });
 
 clearButton.addEventListener('click', () => {
