@@ -25,3 +25,8 @@ textarea {
 .dark {
     color: rgba(255, 255, 255, 1);
 }
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+}
