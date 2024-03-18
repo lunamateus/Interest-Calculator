@@ -20,7 +20,7 @@ function setTitle(pages, website) {
   const titles = document.querySelectorAll('title');
   let thisPage = (window.location.pathname).split("/").pop().split(".")[0];
 
-  thisPage = thisPage == undefined ? pages['index'] : thisPage;
+  thisPage = thisPage || thisPage != undefined ? thisPage : pages['index'];
 
   for (const title of titles) {
     title.textContent = `${pages[thisPage]} | ${website}`;
@@ -29,7 +29,7 @@ function setTitle(pages, website) {
 
 function addIcon(name) {
   const img = document.createElement('img');
-  img.src = `../assets/images/${name}.png`;
+  img.src = `./assets/images/${name}.png`;
   img.alt = name;
   return img;
 }
