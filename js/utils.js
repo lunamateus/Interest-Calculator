@@ -27,7 +27,14 @@ function setTitle(pages, website) {
   }
 }
 
-function setTextContent(elementType, attribute, data, tooltip = false) {
+function addIcon(name) {
+  const img = document.createElement('img');
+  img.src = `../assets/images/${name}.png`;
+  img.alt = name;
+  return img;
+}
+
+function setTextContent(elementType, attribute, data, tooltip = false, icon="") {
   const elements = document.querySelectorAll(elementType);
 
   for (const element of elements) {
@@ -38,7 +45,11 @@ function setTextContent(elementType, attribute, data, tooltip = false) {
       if (tooltip) {
         new bootstrap.Tooltip(element, {title:text});
       } else {
-        element.textContent = text
+        element.textContent = text;
+        if (icon) {
+          element.textContent += ' ';
+          element.appendChild(addIcon(id));
+        }
       }
     }
   }
@@ -66,11 +77,11 @@ function loadTexts(data, lang) {
   setTitle(data.links, data.headers.headerCalculator);
   setTextContent('h3', 'id', data.headers);
   setTextContent('a', 'data-text', data.links);
-  setTextContent('button', 'data-text', data.language);
+  setTextContent('button', 'data-text', data.language, false, true);
   setTextContent('label', 'for', data.labels);
   setTextContent('button', 'id', data.buttons);
   setTextContent('span', 'id', data.tooltips, true);
-  setTextContent('a', 'data-text', data.language);
+  setTextContent('a', 'data-text', data.language, false, true);
   if (document.location.pathname.includes('faq.html')) {
     setTextContent('h3', 'data-text', data.links);
     createAccordion(data.faq);
