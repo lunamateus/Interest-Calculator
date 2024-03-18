@@ -20,7 +20,7 @@ function setTitle(pages, website) {
   const titles = document.querySelectorAll('title');
   let thisPage = (window.location.pathname).split("/").pop().split(".")[0];
 
-  thisPage = thisPage || thisPage != undefined ? thisPage : pages['index'];
+  thisPage = thisPage != '' && thisPage != undefined ? thisPage : pages['index'];
 
   for (const title of titles) {
     title.textContent = `${pages[thisPage]} | ${website}`;
@@ -34,7 +34,7 @@ function addIcon(name) {
   return img;
 }
 
-function setTextContent(elementType, attribute, data, tooltip = false, icon="") {
+function setTextContent(elementType, attribute, data, tooltip = false, icon=false) {
   const elements = document.querySelectorAll(elementType);
 
   for (const element of elements) {
