@@ -27,10 +27,6 @@ export class Investment {
     return this.totalMonths;
   }
 
-  getMonthyInvestments() {
-    return this.monthlyInvestment;
-  }
-
   getInvestedAmounts() {
     return this.invested;
   }
