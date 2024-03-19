@@ -11,8 +11,8 @@ export class Investment {
     this.months = Array(this.totalMonths + 1).fill(0).map((n, i) => n + i);
   }
 
-  getAmount(month) {
-    return this.amount[month];
+  getTotalAmount() {
+    return this.amount[this.totalMonths];
   }
 
   getTotalAmounts() {
@@ -29,10 +29,6 @@ export class Investment {
 
   getMonthyInvestments() {
     return this.monthlyInvestment;
-  }
-
-  getInvestedAmount(month) {
-    return this.invested[month];
   }
 
   getInvestedAmounts() {

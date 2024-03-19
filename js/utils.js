@@ -19,12 +19,9 @@ async function loadTranslations(lang) {
 function setTitle(pages, website) {
   const titles = document.querySelectorAll('title');
   let thisPage = (window.location.pathname).split("/").pop().split(".")[0];
-
-  thisPage = thisPage != '' && thisPage != undefined ? thisPage : pages['index'];
-
-  for (const title of titles) {
-    title.textContent = `${pages[thisPage]} | ${website}`;
-  }
+  thisPage = thisPage ? thisPage : 'index';
+  
+  titles[0].textContent = `${pages[thisPage]} | ${website}`;
 }
 
 function addIcon(name) {
