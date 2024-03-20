@@ -35,6 +35,10 @@ export class Investment {
     return rate + 1;
   }
 
+  formatNumber(number) {
+    return parseFloat(number.toFixed(2));
+  }
+
   grow() {
     for (let month = 0; month < this.totalMonths; month++) {
       let lastAmount = this.amount[month];
@@ -43,9 +47,9 @@ export class Investment {
       let totalInvested = actualMonthlyInvestment + this.invested[month];
       let actualAmount = lastAmount * this.getRateFactor(this.interest) + actualMonthlyInvestment;
   
-      this.monthlyInvestment.push(parseFloat(actualMonthlyInvestment.toFixed(2)));
-      this.invested.push(parseFloat(totalInvested.toFixed(2)));
-      this.amount.push(parseFloat(actualAmount.toFixed(2)));
+      this.monthlyInvestment.push(this.formatNumber(actualMonthlyInvestment));
+      this.invested.push(this.formatNumber(totalInvested));
+      this.amount.push(this.formatNumber(actualAmount));
     }
   }
 };

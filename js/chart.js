@@ -28,6 +28,12 @@ export function drawChart(dates, total, increments, texts, amount) {
         legend: {
           display: true
         },
+        elements: {
+          point: {
+            pointRadius: 2,
+            hoverRadius: 5
+          }
+        },
         plugins : {
           title: {
             display: true,
