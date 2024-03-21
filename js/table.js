@@ -40,8 +40,12 @@ function getMonthYears(nMonths, lang) {
   return monthYearStrings;
 }
 
+function truncateString(str, maxLength = 21) {
+  return str.length > maxLength ? str.slice(0, maxLength) + "..." : str;
+}
+
 export function formatToCurrency(content) {
-  return `$${content.toLocaleString()}`;
+  return `$${truncateString(content.toLocaleString())}`;
 }
 
 function createCollapseButton(id, hiddenText, shownText) {
