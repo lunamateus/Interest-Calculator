@@ -1,10 +1,21 @@
 import { generateData } from './table.js';
 
+const calculatorButton = document.getElementById("calculator-form");
 const clearButton = document.getElementById("clear");
 const numberFields = document.querySelectorAll('#calculator-form input[type="number"]');
 const chart = document.getElementById("evoChart");
 
-document.getElementById("calculator-form").addEventListener("submit", function(event) {
+function getInputFieldValues(fields) {
+  const values = [];
+
+  fields.forEach(field => {
+    values.push(parseFloat(field.value));
+  });
+
+  return values;
+}
+
+calculatorButton.addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent default form submission
   //Validate input data
   const fields = ["principal", "monthlyContribution", "increaseRate", "interest", "years"];
@@ -25,7 +36,7 @@ document.getElementById("calculator-form").addEventListener("submit", function(e
     return;
   }
 
-  generateData();
+  generateData(getInputFieldValues(numberFields));
   chart.scrollIntoView({ behavior: "smooth" });
 });
 

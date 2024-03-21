@@ -1,13 +1,13 @@
 export class Investment {
   constructor(amount, monthlyInvestment = 0, increaseRate = 0, interest, years) {
-    this.amount = [parseFloat(amount.toFixed(2))];
+    this.amount = [this.formatNumber(amount)];
     this.monthlyInvestment = [monthlyInvestment];
     this.increaseRate = increaseRate;
     this.interest = interest;
     this.years = years;
     this.currentMonth = 0;
     this.totalMonths = years * 12;
-    this.invested = [parseFloat(amount.toFixed(2))];
+    this.invested = [this.formatNumber(amount)];
     this.months = Array(this.totalMonths + 1).fill(0).map((n, i) => n + i);
   }
 

@@ -107,19 +107,13 @@ function createTable(nRows, columns, tableData) {
   return tableDiv;
 }
 
-export function generateData() {
+export function generateData(values) {
   const columns = getColumnNames(dataT.chart);
   const collapseDiv = document.createElement("div");
   let tableDiv;
   let investmentData;
 
-  const investment = new Investment(
-    parseFloat(document.getElementById('principal').value), // principal
-    parseFloat(document.getElementById('monthlyContribution').value), // monthlyContribution
-    parseFloat(document.getElementById('increaseRate').value) / 100, // increaseRate
-    parseFloat(document.getElementById('interest').value) / 100, // interest
-    parseInt(document.getElementById('years').value) // years
-  );
+  const investment = new Investment(values[0], values[1], values[2] / 100, values[3] / 100, values[4]);
   const dates = getMonthYears(investment.getTotalMonths() + 1, userLang);
   
   clearData();
@@ -130,8 +124,7 @@ export function generateData() {
 
   buttonsText = dataT.buttons;
   collapseDiv.classList.add("d-grid", "gap-2");
-  collapseDiv.appendChild(
-    createCollapseButton("table", buttonsText.showTable, buttonsText.hideTable));
+  collapseDiv.appendChild(createCollapseButton("table", buttonsText.showTable, buttonsText.hideTable));
   collapseDiv.appendChild(tableDiv);
 
   chart = drawChart(
