@@ -2,9 +2,9 @@ import {Investment} from './investment.js';
 import {drawChart} from './chart.js';
 import { getJsonValue, userLang, dataT } from './utils.js';
 
+const resultsDiv = document.getElementById("results");
 let chart = new Chart("evoChart", {});
 let buttonsText;
-const resultsDiv = document.getElementById("results");
 
 function clearData() {
   chart.destroy();
@@ -21,7 +21,6 @@ function appendToParent(element, parent, content = '', scope = '') {
 function getMonthYears(nMonths, lang) {
   const monthYearStrings = [];
   const currentDate = new Date();
-
   let currentYear = currentDate.getFullYear();
   let currentMonth = currentDate.getMonth();
 
@@ -29,8 +28,8 @@ function getMonthYears(nMonths, lang) {
     const formattedString = new Date(currentYear, currentMonth, 1)
       .toLocaleDateString(lang, { month: 'long', year: 'numeric' });
     monthYearStrings.push(formattedString);
-
     currentMonth++;
+    
     if (currentMonth >= 12) {
       currentMonth = 0;
       currentYear++;
@@ -118,22 +117,26 @@ function timeInMonths(years, months) {
 export function generateData(values) {
   const columns = getColumnNames(dataT.chart);
   const collapseDiv = document.createElement("div");
-  let tableDiv;
-  let investmentData;
-  const investment = new Investment(values[0], values[1], values[2] / 100, values[3] / 100, timeInMonths(values[4], values[5]));
+  const investment = new Investment(
+    values['principal'], 
+    values['monthlyContribution'], 
+    values['increaseRate'] / 100, 
+    values['interest'] / 100, 
+    timeInMonths(values['years'], values['months']));
   const dates = getMonthYears(investment.getNumOfMonths() + 1, userLang);
+  let investmentData;
+  let tableDiv;
   
   clearData();
   investment.grow();
   
   investmentData = [investment.getMonths(), dates, investment.getInvestedAmounts(), investment.getTotalAmounts()];
   tableDiv = createTable(investment.getNumOfMonths(), columns, investmentData);
-
   buttonsText = dataT.buttons;
+
   collapseDiv.classList.add("d-grid", "gap-2");
   collapseDiv.appendChild(createCollapseButton("table", buttonsText.showTable, buttonsText.hideTable));
   collapseDiv.appendChild(tableDiv);
-  console.log(investmentData); //////////////
 
   chart = drawChart(
     investment.getMonths(), 
