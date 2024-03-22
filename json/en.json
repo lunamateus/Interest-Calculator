@@ -4,17 +4,21 @@
     "monthlyContributionTooltip": "The amount of money you can monthly invest after your initial deposit.",
     "increaseRateTooltip": "The percentage you can add to your monthly contributions.",
     "interestTooltip": "The average growth you expect to earn on your investment.",
-    "yearsTooltip": "The number of years depositing monthly contributions."
+    "timeTooltip": "The lenght of time depositing monthly contributions."
   },
   "labels": {
     "principal": "Initial deposit:",
     "monthlyContribution": "Initial monthly contribution:",
     "increaseRate": "Monthly contribution increase rate:",
     "interest": "Estimated Interest rate:",
-    "years": "Number of years:",
+    "time": "Lenght of time:",
     "name": "Name:",
     "email": "Email Address:",
     "message": "Message:"
+  },
+  "span": {
+    "months": "months",
+    "years": "years"
   },
   "buttons": {
     "calculate": "Calculate",

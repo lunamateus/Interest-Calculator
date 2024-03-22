@@ -18,7 +18,7 @@ function getInputFieldValues(fields) {
 calculatorButton.addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent default form submission
   //Validate input data
-  const fields = ["principal", "monthlyContribution", "increaseRate", "interest", "years"];
+  const fields = ["principal", "monthlyContribution", "increaseRate", "interest", "years", "months"];
   let isValid = true;
   let errorMessage = "Please, enter valid numbers for: ";
   for (const field of fields) {

@@ -1,30 +1,29 @@
 export class Investment {
-  constructor(amount, monthlyInvestment = 0, increaseRate = 0, interest, years) {
+  constructor(amount, monthlyInvestment = 0, increaseRate = 0, interest, numOfMonths) {
     this.amount = [this.formatNumber(amount)];
     this.monthlyInvestment = [monthlyInvestment];
     this.increaseRate = increaseRate;
     this.interest = interest;
-    this.years = years;
     this.currentMonth = 0;
-    this.totalMonths = years * 12;
+    this.numOfMonths = numOfMonths;
     this.invested = [this.formatNumber(amount)];
-    this.months = Array(this.totalMonths + 1).fill(0).map((n, i) => n + i);
+    this.months = Array(this.numOfMonths + 1).fill(0).map((n, i) => n + i);
   }
 
   getTotalAmount() {
-    return this.amount[this.totalMonths];
+    return this.amount[this.numOfMonths];
   }
 
   getTotalAmounts() {
     return this.amount;
   }
 
-  getMonths() {
-    return this.months;
+  getNumOfMonths() {
+    return this.numOfMonths;
   }
 
-  getTotalMonths() {
-    return this.totalMonths;
+  getMonths() {
+    return this.months;
   }
 
   getInvestedAmounts() {
@@ -40,7 +39,7 @@ export class Investment {
   }
 
   grow() {
-    for (let month = 0; month < this.totalMonths; month++) {
+    for (let month = 0; month < this.numOfMonths; month++) {
       let lastAmount = this.amount[month];
       let lastMonthlyInvestment = this.monthlyInvestment[month];
       let actualMonthlyInvestment = lastMonthlyInvestment * this.getRateFactor(this.increaseRate);

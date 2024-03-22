@@ -75,9 +75,10 @@ function loadTexts(data, lang) {
   setTextContent('h3', 'id', data.headers);
   setTextContent('a', 'data-text', data.links);
   setTextContent('button', 'data-text', data.language, false, true);
-  setTextContent('label', 'for', data.labels);
-  setTextContent('button', 'id', data.buttons);
   setTextContent('span', 'id', data.tooltips, true);
+  setTextContent('label', 'for', data.labels);
+  setTextContent('span', 'id', data.span);
+  setTextContent('button', 'id', data.buttons);
   setTextContent('a', 'data-text', data.language, false, true);
   if (document.location.pathname.includes('faq.html')) {
     setTextContent('h3', 'data-text', data.links);

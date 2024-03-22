@@ -111,25 +111,29 @@ function createTable(nRows, columns, tableData) {
   return tableDiv;
 }
 
+function timeInMonths(years, months) {
+  return years * 12 + months;
+}
+
 export function generateData(values) {
   const columns = getColumnNames(dataT.chart);
   const collapseDiv = document.createElement("div");
   let tableDiv;
   let investmentData;
-
-  const investment = new Investment(values[0], values[1], values[2] / 100, values[3] / 100, values[4]);
-  const dates = getMonthYears(investment.getTotalMonths() + 1, userLang);
+  const investment = new Investment(values[0], values[1], values[2] / 100, values[3] / 100, timeInMonths(values[4], values[5]));
+  const dates = getMonthYears(investment.getNumOfMonths() + 1, userLang);
   
   clearData();
   investment.grow();
   
   investmentData = [investment.getMonths(), dates, investment.getInvestedAmounts(), investment.getTotalAmounts()];
-  tableDiv = createTable(investment.getTotalMonths(), columns, investmentData);
+  tableDiv = createTable(investment.getNumOfMonths(), columns, investmentData);
 
   buttonsText = dataT.buttons;
   collapseDiv.classList.add("d-grid", "gap-2");
   collapseDiv.appendChild(createCollapseButton("table", buttonsText.showTable, buttonsText.hideTable));
   collapseDiv.appendChild(tableDiv);
+  console.log(investmentData); //////////////
 
   chart = drawChart(
     investment.getMonths(), 
