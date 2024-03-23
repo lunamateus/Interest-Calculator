@@ -4,7 +4,7 @@
     "monthlyContributionTooltip": "The amount of money you can monthly invest after your initial deposit.",
     "increaseRateTooltip": "The percentage you can add to your monthly contributions.",
     "interestTooltip": "The average growth you expect to earn on your investment.",
-    "timeTooltip": "The lenght of time depositing monthly contributions."
+    "timeTooltip": "The lenght of time invested."
   },
   "labels": {
     "principal": "Initial deposit:",

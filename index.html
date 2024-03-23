@@ -80,18 +80,26 @@
         <div class="input-group">
           <span class="input-group-text">%</span>
           <input type="number" step="0.01" class="form-control" id="interest" name="interest" autocomplete="on" value="1" min="0" max="100" required>
-          <select class="form-select" aria-label="interestPeriod" id="interestPeriod">
+          <select class="btn btn-outline-secondary" aria-label="interestPeriod" id="interestPeriod">
             <option value="amonth" id="amonth" selected></option>
             <option value="ayear" id="ayear"></option>
           </select>
         </div>
         <label for="time"></label>
         <span class="material-symbols-outlined" id="timeTooltip">info</span>
-        <div class="input-group">
-          <input type="number" step="1" class="form-control" id="years" name="years" autocomplete="on" value="5" min="0" max="100" required>
-          <span class="input-group-text" id="years"></span>
-          <input type="number" step="1" class="form-control" id="months" name="months" autocomplete="on" value="0" min="0" max="1200" required>
-          <span class="input-group-text" id="months"></span>
+        <div class="row">
+          <div class="col">
+            <div class="input-group">
+              <input type="number" step="1" class="form-control" id="years" name="years" autocomplete="on" value="5" min="0" max="100" required>
+              <span class="input-group-text" id="years"></span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="input-group">
+              <input type="number" step="1" class="form-control" id="months" name="months" autocomplete="on" value="0" min="0" max="1200" required>
+              <span class="input-group-text" id="months"></span>     
+            </div>
+          </div>
         </div>
         <div class="d-grid gap-2 py-3">
           <button type="submit" formmethod="POST" class="btn btn-primary" id="calculate"></button>

@@ -4,7 +4,7 @@
     "monthlyContributionTooltip": "O valor que você pode investir mensalmente após o depósito inicial.",
     "increaseRateTooltip": "O percentual que você pode adicionar às suas contribuições mensais.",
     "interestTooltip": "O crescimento médio que você espera ganhar com seu investimento.",
-    "timeTooltip": "O período de tempo depositando contribuições mensais."
+    "timeTooltip": "O período de tempo investido."
   },
   "labels": {
     "principal": "Depósito inicial:",
