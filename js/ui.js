@@ -31,7 +31,7 @@ function addIcon(name) {
   return img;
 }
 
-function setTextContent(elementType, attribute, data, tooltip = false, icon=false) {
+function setTextContent(elementType, attribute, data, opt = {tooltip: false, icon: false, description: false}) {
   const elements = document.querySelectorAll(elementType);
 
   for (const element of elements) {
@@ -39,11 +39,13 @@ function setTextContent(elementType, attribute, data, tooltip = false, icon=fals
     const text = data[id];
 
     if (text) {
-      if (tooltip) {
+      if (opt.tooltip) {
         new bootstrap.Tooltip(element, {title:text});
+      } else if (opt.description) {
+        element.description = text;
       } else {
         element.textContent = text;
-        if (icon) {
+        if (opt.icon) {
           element.textContent += ' ';
           element.appendChild(addIcon(id));
         }
@@ -74,13 +76,14 @@ function loadTexts(data, lang) {
   setTitle(data.links, data.headers.headerCalculator);
   setTextContent('h3', 'id', data.headers);
   setTextContent('a', 'data-text', data.links);
-  setTextContent('button', 'data-text', data.language, false, true);
-  setTextContent('span', 'id', data.tooltips, true);
+  setTextContent('button', 'data-text', data.language, {icon: true});
+  setTextContent('span', 'id', data.tooltips, {tooltip: true});
   setTextContent('label', 'for', data.labels);
+  setTextContent('option', 'id', data.select);
   setTextContent('span', 'id', data.span);
   setTextContent('button', 'id', data.buttons);
-  setTextContent('a', 'data-text', data.language, false, true);
-  setTextContent('option', 'id', data.select);
+  setTextContent('a', 'data-text', data.language, {icon: true});
+  setTextContent('meta', 'name', data.title, {description: true});
   if (document.location.pathname.includes('faq.html')) {
     setTextContent('h3', 'data-text', data.links);
     createAccordion(data.faq);
