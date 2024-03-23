@@ -4,6 +4,8 @@ export let userLang;
 export let dataT;
 const langButtons = document.querySelectorAll(".lang-link");
 const currentYearSpan = document.getElementById("currentYear");
+const languageButton = document.getElementById("language");
+const htmlTag = document.querySelector('html');
 
 async function loadTranslations(lang) {
   const file = `json/${lang == 'pt' ? 'pt' : 'en'}.json`; 
@@ -71,7 +73,8 @@ export function getJsonValue(key) {
 }
 
 function loadTexts(data, lang) {
-  document.getElementById("language").setAttribute('data-text', lang);
+  languageButton.setAttribute('data-text', lang);
+  htmlTag.setAttribute('lang', lang);
 
   setTitle(data.links, data.headers.headerCalculator);
   setTextContent('h3', 'id', data.headers);
