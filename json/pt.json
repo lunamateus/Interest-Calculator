@@ -2,14 +2,14 @@
   "tooltips": {
     "principalTooltip": "O valor inicial que você irá depositar.",
     "monthlyContributionTooltip": "O valor que você pode investir mensalmente após o depósito inicial.",
-    "increaseRateTooltip": "O percentual que você pode adicionar às suas contribuições mensais.",
-    "interestTooltip": "O crescimento médio que você espera ganhar com seu investimento.",
+    "increaseRateTooltip": "O percentual que você pode adicionar aos aportes. Por exemplo, para uma adição de 5% digite 5.",
+    "interestTooltip": "O crescimento médio que você espera ganhar com seu investimento. Por exemplo, para um juro de 8% digite 8.",
     "timeTooltip": "O período de tempo investido."
   },
   "labels": {
     "principal": "Depósito inicial:",
-    "monthlyContribution": "Contribuição mensal inicial:",
-    "increaseRate": "Taxa de aumento da contribuição mensal:",
+    "monthlyContribution": "Aporte mensal inicial:",
+    "increaseRate": "Taxa de aumento dos aportes:",
     "interest": "Taxa de juros estimada:",
     "time": "Período:",
     "name": "Nome:",

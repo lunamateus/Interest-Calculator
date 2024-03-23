@@ -1,22 +1,10 @@
 import {Investment} from './investment.js';
 import {drawChart} from './chart.js';
-import { getJsonValue, userLang, dataT } from './utils.js';
+import { getJsonValue, userLang, dataT } from './ui.js';
 
 const resultsDiv = document.getElementById("results");
 let chart = new Chart("evoChart", {});
 let buttonsText;
-
-function clearData() {
-  chart.destroy();
-  resultsDiv.innerHTML = "";
-}
-
-function appendToParent(element, parent, content = '', scope = '') {
-  const child = document.createElement(element);
-  child.textContent = content;
-  child.scope = scope;
-  parent.appendChild(child);
-}
 
 function getMonthYears(nMonths, lang) {
   const monthYearStrings = [];
@@ -43,8 +31,16 @@ function truncateString(str, maxLength = 21) {
   return str.length > maxLength ? str.slice(0, maxLength) + "..." : str;
 }
 
+function getColumnNames(data) {
+  return [data.month, data.date, data.invested, data.totalAmount];
+}
+
 export function formatToCurrency(content) {
   return `$${truncateString(content.toLocaleString())}`;
+}
+
+function timeInMonths(years, months) {
+  return years * 12 + months;
 }
 
 function createCollapseButton(id, hiddenText, shownText) {
@@ -61,10 +57,6 @@ function createCollapseButton(id, hiddenText, shownText) {
   });
 
   return button;
-}
-
-function getColumnNames(data) {
-  return [data.month, data.date, data.invested, data.totalAmount];
 }
 
 function createTableHeader(headerRow, columns) {
@@ -110,8 +102,16 @@ function createTable(nRows, columns, tableData) {
   return tableDiv;
 }
 
-function timeInMonths(years, months) {
-  return years * 12 + months;
+function appendToParent(element, parent, content = '', scope = '') {
+  const child = document.createElement(element);
+  child.textContent = content;
+  child.scope = scope;
+  parent.appendChild(child);
+}
+
+function clearData() {
+  chart.destroy();
+  resultsDiv.innerHTML = "";
 }
 
 export function generateData(values) {
@@ -120,9 +120,10 @@ export function generateData(values) {
   const investment = new Investment(
     values['principal'], 
     values['monthlyContribution'], 
-    values['increaseRate'] / 100, 
+    values['increaseRate'],
     values['interest'],
-    timeInMonths(values['years'], values['months']));
+    timeInMonths(values['years'], values['months']),
+    values['annualIncrease']);
   const dates = getMonthYears(investment.getNumOfMonths() + 1, userLang);
   let investmentData;
   let tableDiv;

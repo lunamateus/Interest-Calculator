@@ -74,6 +74,10 @@
         <div class="input-group">
           <span class="input-group-text">%</span>
           <input type="number" step="0.01" class="form-control" id="increaseRate" name="increaseRate" autocomplete="on" value="0.5" min="0" max="100" required>
+          <select class="btn btn-outline-secondary" aria-label="increaseRatePeriod" id="increaseRatePeriod">
+            <option value="amonth" id="amonth" selected></option>
+            <option value="ayear" id="ayear"></option>
+          </select>
         </div>
         <label for="interest"></label>
         <span class="material-symbols-outlined" id="interestTooltip">info</span>
@@ -135,7 +139,7 @@
     </footer>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/ui.js"></script>
   <script type="module" src="js/buttons.js"></script>
   <script async src="https://static.addtoany.com/menu/page.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
