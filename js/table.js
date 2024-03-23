@@ -29,7 +29,7 @@ function getMonthYears(nMonths, lang) {
       .toLocaleDateString(lang, { month: 'long', year: 'numeric' });
     monthYearStrings.push(formattedString);
     currentMonth++;
-    
+
     if (currentMonth >= 12) {
       currentMonth = 0;
       currentYear++;
@@ -121,7 +121,7 @@ export function generateData(values) {
     values['principal'], 
     values['monthlyContribution'], 
     values['increaseRate'] / 100, 
-    values['interest'] / 100, 
+    values['interest'],
     timeInMonths(values['years'], values['months']));
   const dates = getMonthYears(investment.getNumOfMonths() + 1, userLang);
   let investmentData;

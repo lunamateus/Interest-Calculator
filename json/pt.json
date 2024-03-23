@@ -20,6 +20,10 @@
     "months": "meses",
     "years": "anos"
   },
+  "select": {
+    "amonth": "mensal",
+    "ayear": "anual"
+  },
   "buttons": {
     "calculate": "Calcular",
     "clear": "Limpar",

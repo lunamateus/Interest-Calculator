@@ -3,6 +3,7 @@ import { generateData } from './table.js';
 const calculatorButton = document.getElementById("calculator-form");
 const clearButton = document.getElementById("clear");
 const numberFields = document.querySelectorAll('#calculator-form input[type="number"]');
+const interestSelector = document.getElementById('interestPeriod');
 const chart = document.getElementById("evoChart");
 const MAX_YEARS = 100;
 const MAX_MONTHS = 1200
@@ -15,6 +16,17 @@ function getInputFieldValues(fields, values) {
   return obj;
 }
 
+function percentageToDecimal(percentage, selector) {
+  let value = percentage;
+  if (selector.selectedIndex == 0) {
+    value /= 100; //a month
+  } else if (selector.selectedIndex == 1) {
+    value /= 1200; //a year
+  }
+
+  return value;
+}
+
 calculatorButton.addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent default form submission
   //Validate input data
@@ -23,6 +35,8 @@ calculatorButton.addEventListener("submit", function(event) {
   let isValid = true;
   let errorMessage = "Please, enter valid numbers for: ";
 
+  fields['interest'] = percentageToDecimal(fields['interest'], interestSelector);
+  
   for (let index = 0; index < fieldsID.length; index++) {
     if (isNaN(fields[fieldsID[index]])) {
       isValid = false;

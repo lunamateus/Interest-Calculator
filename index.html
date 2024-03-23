@@ -72,14 +72,18 @@
         <label for="increaseRate"></label>
         <span class="material-symbols-outlined" id="increaseRateTooltip">info</span>
         <div class="input-group">
-          <input type="number" step="0.01" class="form-control" id="increaseRate" name="increaseRate" autocomplete="on" value="0.5" min="0" max="100" required>
           <span class="input-group-text">%</span>
+          <input type="number" step="0.01" class="form-control" id="increaseRate" name="increaseRate" autocomplete="on" value="0.5" min="0" max="100" required>
         </div>
         <label for="interest"></label>
         <span class="material-symbols-outlined" id="interestTooltip">info</span>
         <div class="input-group">
-          <input type="number" step="0.01" class="form-control" id="interest" name="interest" autocomplete="on" value="1" min="0" max="100" required>
           <span class="input-group-text">%</span>
+          <input type="number" step="0.01" class="form-control" id="interest" name="interest" autocomplete="on" value="1" min="0" max="100" required>
+          <select class="form-select" aria-label="interestPeriod" id="interestPeriod">
+            <option value="amonth" id="amonth" selected></option>
+            <option value="ayear" id="ayear"></option>
+          </select>
         </div>
         <label for="time"></label>
         <span class="material-symbols-outlined" id="timeTooltip">info</span>

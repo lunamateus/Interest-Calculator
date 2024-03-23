@@ -80,6 +80,7 @@ function loadTexts(data, lang) {
   setTextContent('span', 'id', data.span);
   setTextContent('button', 'id', data.buttons);
   setTextContent('a', 'data-text', data.language, false, true);
+  setTextContent('option', 'id', data.select);
   if (document.location.pathname.includes('faq.html')) {
     setTextContent('h3', 'data-text', data.links);
     createAccordion(data.faq);

@@ -20,6 +20,10 @@
     "months": "months",
     "years": "years"
   },
+  "select": {
+    "amonth": "a month",
+    "ayear": "a year"
+  },
   "buttons": {
     "calculate": "Calculate",
     "clear": "Clear",
