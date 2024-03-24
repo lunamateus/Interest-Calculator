@@ -1,9 +1,4 @@
 {
-  "title": {
-    "description": "Esta calculadora de juros simples ajuda você a estimar suas economias futuras com base no depósito inicial, contribuições mensais, taxa de juros e período de investimento.",
-    "og:title": "Calculadora de juros - Planeje suas economias",
-    "og:description": "Planeje suas finanças com nossa calculadora de juros fácil de usar. Estime suas economias futuras com base em seus depósitos, contribuições e taxas de juros."
-  },
   "tooltips": {
     "principalTooltip": "O valor inicial que você irá depositar.",
     "monthlyContributionTooltip": "O valor que você pode investir mensalmente após o depósito inicial.",

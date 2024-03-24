@@ -1,9 +1,4 @@
 {
-  "title": {
-    "description": "This simple Interest Calculator helps you estimate your future savings based on initial deposit, monthly contributions, interest rate, and investment period.",
-    "og:title": "Interest Calculator - Plan Your Savings",
-    "og:description": "Plan your finances with our easy-to-use Interest Calculator. Estimate your future savings based on your deposits, contributions, and interest rates."
-  },
   "tooltips": {
     "principalTooltip": "The amount of money you will start depositing.",
     "monthlyContributionTooltip": "The amount of money you can monthly invest after your initial deposit.",

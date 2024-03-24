@@ -33,7 +33,7 @@ function addIcon(name) {
   return img;
 }
 
-function setTextContent(elementType, attribute, data, opt = {tooltip: false, icon: false, content: false}) {
+function setTextContent(elementType, attribute, data, opt = {tooltip: false, icon: false}) {
   const elements = document.querySelectorAll(elementType);
 
   for (const element of elements) {
@@ -43,8 +43,6 @@ function setTextContent(elementType, attribute, data, opt = {tooltip: false, ico
     if (text) {
       if (opt.tooltip) {
         new bootstrap.Tooltip(element, {title:text});
-      } else if (opt.content) {
-        element.content = text;
       } else {
         element.textContent = text;
         if (opt.icon) {
@@ -86,7 +84,6 @@ function loadTexts(data, lang) {
   setTextContent('span', 'id', data.span);
   setTextContent('button', 'id', data.buttons);
   setTextContent('a', 'data-text', data.language, {icon: true});
-  setTextContent('meta', 'name', data.title, {content: true});
   if (document.location.pathname.includes('faq.html')) {
     setTextContent('h3', 'data-text', data.links);
     createAccordion(data.faq);
