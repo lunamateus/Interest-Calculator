@@ -84,7 +84,7 @@ function loadTexts(data, lang) {
   setTextContent('span', 'id', data.span);
   setTextContent('button', 'id', data.buttons);
   setTextContent('a', 'data-text', data.language, {icon: true});
-  if (document.location.pathname.includes('faq.html')) {
+  if (document.location.pathname.includes('faq')) {
     setTextContent('h3', 'data-text', data.links);
     createAccordion(data.faq);
   }
@@ -99,23 +99,22 @@ dataT = await loadTranslations(userLang);
 
 langButtons.forEach(function(button) {
   button.addEventListener("click", async function() {
-    const newLang = this.dataset.text;
-    localStorage.setItem("userLang", newLang);
-    const newTexts = await loadTranslations(newLang);
+    const thisPage = document.location.pathname;
+    
+    userLang = this.dataset.text;
+    localStorage.setItem("userLang", userLang);
+    dataT = await loadTranslations(userLang);
 
-    userLang = newLang;
-    dataT = newTexts;
-
-    if (document.location.pathname.includes('faq.html')) {
-      document.getElementById("faqAccordion").innerHTML = "";
-    } else if (document.location.pathname.includes('index.html')){
+    if (thisPage.includes('index') || thisPage == '/'){
       document.getElementById("results").innerHTML = "";
       document.getElementById("evoChart").style.display = "none";
+    } else if (thisPage.includes('faq')) {
+      document.getElementById("faqAccordion").innerHTML = "";
     }
 
     loadTexts(dataT, userLang);
   });
 });
 
-currentYearSpan.textContent = new Date().getFullYear();
 loadTexts(dataT, userLang);
+currentYearSpan.textContent = new Date().getFullYear();
