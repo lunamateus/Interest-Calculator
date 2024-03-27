@@ -34,11 +34,12 @@
   "links": {
     "index": "Início",
     "faq": "Perguntas frequentes",
-    "about": "Sobre nós"
+    "contact": "Contato"
   },
   "headers": {
     "headerCalculator": "Calculadora de Juros Compostos",
-    "headerContact": "Contato"
+    "headerContact": "Fale conosco",
+    "pContact": "A carteira está um pouco mais vazia do que o habitual? Não conseguimos fazer dinheiro aparecer magicamente, mas podemos te ajudar a esticá-lo um pouco mais!"
   },
   "chart": {
     "total": "Total",

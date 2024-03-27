@@ -36,7 +36,7 @@
             <a class="nav-link" data-text="faq" href="./faq.html"></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" data-text="about" href="./about.html"></a>
+            <a class="nav-link active" data-text="contact" href="./contact.html"></a>
           </li>
         </ul>
         <div class="d-flex">
@@ -56,18 +56,19 @@
     <div class="row py-3 justify-content-md-center">
       <form id="contactForm" class="col col-md-6 py-3 needs-validation" target="_blank" action="https://formspree.io/f/mvoeqrev" method="POST">  
         <image id="logo" src="assets/images/logo-512px.png" alt="Logo">
-          <h3 class="text-center py-3" id="headerContact"></h3>  
+        <h3 class="text-center py-3" id="headerContact"></h3>
+        <p class="text-center fst-italic py-3" id="pContact"></p>
         <div class="mb-3">
           <label class="form-label" for="name"></label>
-          <input class="form-control" id="name" name="name" type="text" autocomplete="on" required/>
+          <input class="form-control" id="name" name="name" type="text" placeholder="david@gmail.com" autocomplete="on" required/>
         </div>
         <div class="mb-3">
           <label class="form-label" for="email"></label>
-          <input class="form-control" id="email" name="email" type="email" autocomplete="on" required/>
+          <input class="form-control" id="email" name="email" type="email" autocomplete="on" placeholder="David Silva" required/>
         </div>
         <div class="mb-3">
           <label class="form-label" for="message"></label>
-          <textarea class="form-control" id="message" name="message" type="text" required></textarea>
+          <textarea class="form-control" id="message" name="message" type="text" placeholder="..." required></textarea>
         </div>
         <div class="d-grid">
           <button class="btn btn-primary btn" form="contactForm" type="submit" id="sendEmail"></button>
@@ -84,7 +85,7 @@
       <ul class="nav col-md-4 justify-content-end">
         <li class="nav-item"><a href="./index.html" class="nav-link px-2 text-muted" data-text="index"></a></li>
         <li class="nav-item"><a href="./faq.html" class="nav-link px-2 text-muted" data-text="faq"></a></li>
-        <li class="nav-item"><a href="./about.html" class="nav-link px-2 text-muted" data-text="about"></a></li>
+        <li class="nav-item"><a href="./contact.html" class="nav-link px-2 text-muted" data-text="contact"></a></li>
       </ul>
     </footer>
   </div>

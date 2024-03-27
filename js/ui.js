@@ -1,4 +1,4 @@
-import {createAccordion} from './faq.js';
+import {createAccordion} from './accordion.js';
 
 export let userLang;
 export let dataT;
@@ -87,6 +87,8 @@ function loadTexts(data, lang) {
   if (document.location.pathname.includes('faq')) {
     setTextContent('h3', 'data-text', data.links);
     createAccordion(data.faq);
+  } else if (document.location.pathname.includes('contact')) {
+    setTextContent('p', 'id', data.headers);
   }
 }
 

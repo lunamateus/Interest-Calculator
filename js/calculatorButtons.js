@@ -7,7 +7,7 @@ const interestSelector = document.getElementById('interestPeriod');
 const increaseSelector = document.getElementById('increaseRatePeriod');
 const chart = document.getElementById("evoChart");
 const MAX_YEARS = 100;
-const MAX_MONTHS = 1200
+const MAX_MONTHS = 1200;
 
 function getInputFieldValues(fields, values) {
   const obj = {};
@@ -61,7 +61,6 @@ calculatorButton.addEventListener("submit", function(event) {
 
   fields['interest'] = percentageToDecimal(fields['interest'], interestSelector);
   fields['annualIncrease'] = annualIncrease(increaseSelector);
-
   generateData(fields);
   chart.scrollIntoView({ behavior: "smooth" });
 });

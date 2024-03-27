@@ -2,7 +2,7 @@
   "tooltips": {
     "principalTooltip": "The amount of money you will start depositing.",
     "monthlyContributionTooltip": "The amount of money you can monthly invest after your initial deposit.",
-    "increaseRateTooltip": "The percentage you can add to your contributions. For exemple, a 5~~% increase rate enter 5.",
+    "increaseRateTooltip": "The percentage you can add to your contributions. For exemple, a 5% increase rate enter 5.",
     "interestTooltip": "The average growth you expect to earn on your investment. For exemple, a 8% interest enter 8.",
     "timeTooltip": "The lenght of time invested."
   },
@@ -34,11 +34,12 @@
   "links": {
     "index": "Home",
     "faq": "FAQs",
-    "about": "About"
+    "contact": "Contact Us"
   },
   "headers": {
     "headerCalculator": "Compound Interest Calculator",
-    "headerContact": "Contact Us"
+    "headerContact": "Contact Us",
+    "pContact": "Wallet feeling a little lighter than usual? We can't magically make money appear, but we might be able to help you stretch it further!"
   },
   "chart": {
     "total": "Total",
