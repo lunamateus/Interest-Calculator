@@ -8,7 +8,7 @@ const languageButton = document.getElementById("language");
 const htmlTag = document.querySelector('html');
 
 async function loadTranslations(lang) {
-  const file = `json/${lang == 'pt' ? 'pt' : 'en'}.json`; 
+  const file = `json/${lang == 'pt' ? 'pt' : 'en'}.json`;
   try {
     const response = await fetch(file);
     const jsonData = await response.json();
@@ -22,7 +22,6 @@ function setTitle(pages, website) {
   const titles = document.querySelectorAll('title');
   let thisPage = (window.location.pathname).split("/").pop().split(".")[0];
   thisPage = thisPage ? thisPage : 'index';
-  
   titles[0].textContent = `${pages[thisPage]} | ${website}`;
 }
 
@@ -102,7 +101,6 @@ dataT = await loadTranslations(userLang);
 langButtons.forEach(function(button) {
   button.addEventListener("click", async function() {
     const thisPage = document.location.pathname;
-    
     userLang = this.dataset.text;
     localStorage.setItem("userLang", userLang);
     dataT = await loadTranslations(userLang);

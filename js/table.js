@@ -94,7 +94,6 @@ function createTable(nRows, columns, tableData) {
 
     tbody.appendChild(thisRow);
   }
-  
   table.appendChild(thead);
   table.appendChild(tbody);
   tableDiv.appendChild(table);
@@ -120,17 +119,16 @@ export function generateData(values) {
   const investment = new Investment(
     values['principal'], 
     values['monthlyContribution'], 
-    values['increaseRate'],
-    values['interest'],
-    timeInMonths(values['years'], values['months']),
+    values['increaseRate'], 
+    values['interest'], 
+    timeInMonths(values['years'], values['months']), 
     values['annualIncrease']);
   const dates = getMonthYears(investment.getNumOfMonths() + 1, userLang);
   let investmentData;
   let tableDiv;
-  
+
   clearData();
   investment.grow();
-  
   investmentData = [investment.getMonths(), dates, investment.getInvestedAmounts(), investment.getTotalAmounts()];
   tableDiv = createTable(investment.getNumOfMonths(), columns, investmentData);
   buttonsText = dataT.buttons;
@@ -141,9 +139,9 @@ export function generateData(values) {
 
   chart = drawChart(
     investment.getMonths(), 
-    investment.getTotalAmounts(),
-    investment.getInvestedAmounts(),
-    getJsonValue('chart'),
+    investment.getTotalAmounts(), 
+    investment.getInvestedAmounts(), 
+    getJsonValue('chart'), 
     `${formatToCurrency(investment.getTotalAmount())}`);
 
   resultsDiv.appendChild(collapseDiv);
